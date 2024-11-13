@@ -1,0 +1,22 @@
+services:
+
+  Dbp\Relay\ValidationBundle\Service\:
+    resource: '../../Service'
+    autowire: true
+    autoconfigure: true
+
+  Dbp\Relay\ValidationBundle\ApiResource\:
+    resource: '../../ApiResource'
+    autowire: true
+    autoconfigure: true
+
+  Dbp\Relay\ValidationBundle\State\:
+    resource: '../../State'
+    autowire: true
+    autoconfigure: true
+
+  Dbp\Relay\ValidationBundle\EventSubscriber\:
+    resource: '../../EventSubscriber'
+    autowire: true
+    autoconfigure: true
+    tags: [kernel.event_listener]
