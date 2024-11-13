@@ -1,6 +1,28 @@
 {
   "$schema": "https://docs.renovatebot.com/renovate-schema.json",
   "extends": [
-    "config:recommended"
+    "config:recommended",
+    "group:allNonMajor",
+    "schedule:weekends",
+    ":automergePatch"
+  ],
+  "rangeStrategy": "update-lockfile",
+  "lockFileMaintenance": {
+    "enabled": true
+  },
+  "constraintsFiltering": "strict",
+  "packageRules": [
+    {
+      "matchPackagePrefixes": ["symfony/"],
+      "allowedVersions": "<7"
+    },
+    {
+      "matchPackageNames": ["api-platform/core"],
+      "allowedVersions": "<4"
+    },
+    {
+      "matchPackageNames": ["phpunit/phpunit"],
+      "allowedVersions": "<11"
+    }
   ]
 }
