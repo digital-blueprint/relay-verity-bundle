@@ -23,7 +23,7 @@ class VerityReportStateProcessor extends AbstractDataProcessor
         parent::__construct();
     }
 
-    public function addItem($data, array $filters): VerityReport
+    public function addItem(mixed $data, array $filters): mixed
     {
         //        $this->denyAccessUnlessGranted('IS_AUTHENTICATED_FULLY');
 
@@ -38,6 +38,10 @@ class VerityReportStateProcessor extends AbstractDataProcessor
         }
 
         //        $this->checkProfilePermissions($profileName);
+
+        if (!is_object($data) || !property_exists($data, 'data')) {
+            throw new BadRequestHttpException('Data error!');
+        }
 
         $uploadedFile = $data->data;
 
