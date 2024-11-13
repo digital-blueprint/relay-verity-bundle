@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Dbp\Relay\VerityBundle\Tests\Helper;
 
 use Dbp\Relay\VerityBundle\Helpers\VerityResult;
@@ -11,7 +13,7 @@ class DummyAPI implements VerityProviderInterface, LoggerAwareInterface
 {
     use LoggerAwareTrait;
 
-    public function __construct(private string $serverUrl, private int $maxsize)
+    public function __construct(private readonly string $serverUrl, private readonly int $maxsize)
     {
     }
 

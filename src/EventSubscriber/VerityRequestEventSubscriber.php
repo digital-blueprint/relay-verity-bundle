@@ -10,7 +10,6 @@ use Dbp\Relay\VerityBundle\State\VerityReportStateProcessor;
 use Symfony\Component\EventDispatcher\Attribute\AsEventListener;
 use Symfony\Component\EventDispatcher\EventSubscriberInterface;
 
-
 #[AsEventListener]
 class VerityRequestEventSubscriber implements EventSubscriberInterface
 {
@@ -18,7 +17,7 @@ class VerityRequestEventSubscriber implements EventSubscriberInterface
     {
     }
 
-    public static function getSubscribedEvents()
+    public static function getSubscribedEvents(): array
     {
         return [
             VerityRequestEvent::class => 'onVerityRequest',

@@ -25,7 +25,7 @@ class VerityReportStateProcessor extends AbstractDataProcessor
 
     public function addItem($data, array $filters): VerityReport
     {
-//        $this->denyAccessUnlessGranted('IS_AUTHENTICATED_FULLY');
+        //        $this->denyAccessUnlessGranted('IS_AUTHENTICATED_FULLY');
 
         $profileName = $data->profile;
         if ($profileName === '') {
@@ -95,8 +95,8 @@ class VerityReportStateProcessor extends AbstractDataProcessor
         return $report;
     }
 
-//    protected function isUserGrantedOperationAccess(int $operation): bool
-//    {
-//        return true;
-//    }
+    //    protected function isUserGrantedOperationAccess(int $operation): bool
+    //    {
+    //        return true;
+    //    }
 }
