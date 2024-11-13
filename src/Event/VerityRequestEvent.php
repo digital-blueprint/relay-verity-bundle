@@ -1,10 +1,10 @@
 <?php
 
-namespace Dbp\Relay\ValidationBundle\Event;
+namespace Dbp\Relay\VerityBundle\Event;
 
 use Symfony\Contracts\EventDispatcher\Event;
 
-class ValidationRequestEvent extends Event
+class VerityRequestEvent extends Event
 {
     public function __construct(
         public ?string $uuid,

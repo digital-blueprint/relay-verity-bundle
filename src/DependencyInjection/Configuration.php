@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Dbp\Relay\ValidationBundle\DependencyInjection;
+namespace Dbp\Relay\VerityBundle\DependencyInjection;
 
 use Symfony\Component\Config\Definition\Builder\TreeBuilder;
 use Symfony\Component\Config\Definition\ConfigurationInterface;
@@ -11,7 +11,7 @@ class Configuration implements ConfigurationInterface
 {
     public function getConfigTreeBuilder(): TreeBuilder
     {
-        $treeBuilder = new TreeBuilder('dbp_relay_validation');
+        $treeBuilder = new TreeBuilder('dbp_relay_verity');
 
         $treeBuilder->getRootNode()
             ->children()

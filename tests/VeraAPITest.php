@@ -2,9 +2,9 @@
 
 declare(strict_types=1);
 
-namespace Dbp\Relay\ValidationBundle\Tests;
+namespace Dbp\Relay\VerityBundle\Tests;
 
-use Dbp\Relay\ValidationBundle\Service\PDFAValidationAPI;
+use Dbp\Relay\VerityBundle\Service\PDFAValidationAPI;
 use Symfony\Bundle\FrameworkBundle\Test\KernelTestCase;
 use Symfony\Component\HttpClient\MockHttpClient;
 use Symfony\Component\HttpClient\Response\MockResponse;

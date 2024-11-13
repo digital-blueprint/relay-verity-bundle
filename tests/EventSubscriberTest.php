@@ -2,9 +2,9 @@
 
 declare(strict_types=1);
 
-namespace Dbp\Relay\ValidationBundle\Tests;
+namespace Dbp\Relay\VerityBundle\Tests;
 
-use Dbp\Relay\ValidationBundle\Event\ValidationRequestEvent;
+use Dbp\Relay\VerityBundle\Event\VerityRequestEvent;
 use Symfony\Bundle\FrameworkBundle\Test\KernelTestCase;
 use Symfony\Component\EventDispatcher\EventDispatcherInterface;
 use Symfony\Component\HttpKernel\Exception\BadRequestHttpException;
@@ -25,7 +25,7 @@ class EventSubscriberTest extends KernelTestCase
     public function testEventSubscriber(): void
     {
         $data = base64_encode('data...');
-        $event = new ValidationRequestEvent(Uuid::uuid_create(), 'test-001.txt', 'unit_test', $data);
+        $event = new VerityRequestEvent(Uuid::uuid_create(), 'test-001.txt', 'unit_test', $data);
 
         $result = $this->dispatcher->dispatch($event);
 
@@ -35,7 +35,7 @@ class EventSubscriberTest extends KernelTestCase
     public function testSizeExceeded(): void
     {
         $data = base64_encode('data.data.data.data.'); // more than 16 chars
-        $event = new ValidationRequestEvent(Uuid::uuid_create(), 'test-002.txt', 'unit_test', $data);
+        $event = new VerityRequestEvent(Uuid::uuid_create(), 'test-002.txt', 'unit_test', $data);
 
         $result = $this->dispatcher->dispatch($event);
 
@@ -49,7 +49,7 @@ class EventSubscriberTest extends KernelTestCase
 
         $data = base64_encode('');
 
-        $event = new ValidationRequestEvent(Uuid::uuid_create(), 'test-003.txt', 'unit_test', $data);
+        $event = new VerityRequestEvent(Uuid::uuid_create(), 'test-003.txt', 'unit_test', $data);
 
         $this->dispatcher->dispatch($event);
     }
@@ -59,7 +59,7 @@ class EventSubscriberTest extends KernelTestCase
         $this->expectException(BadRequestHttpException::class);
 
         $data = base64_encode('data...');
-        $event = new ValidationRequestEvent(Uuid::uuid_create(), 'test-004.txt', '', $data);
+        $event = new VerityRequestEvent(Uuid::uuid_create(), 'test-004.txt', '', $data);
 
         $this->dispatcher->dispatch($event);
     }
@@ -69,7 +69,7 @@ class EventSubscriberTest extends KernelTestCase
         $this->expectException(BadRequestHttpException::class);
 
         $data = base64_encode('data...');
-        $event = new ValidationRequestEvent(Uuid::uuid_create(), 'test-005.txt', 'unknown???', $data);
+        $event = new VerityRequestEvent(Uuid::uuid_create(), 'test-005.txt', 'unknown???', $data);
 
         $this->dispatcher->dispatch($event);
     }

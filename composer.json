@@ -1,5 +1,5 @@
 {
-    "name": "dbp/relay-validation-bundle",
+    "name": "dbp/relay-verity-bundle",
     "description": "A validation bundle for the Relay API gateway",
     "type": "symfony-bundle",
     "license": "AGPL-3.0-or-later",
@@ -31,12 +31,12 @@
     },
     "autoload": {
         "psr-4": {
-            "Dbp\\Relay\\ValidationBundle\\": "src/"
+            "Dbp\\Relay\\VerityBundle\\": "src/"
         }
     },
     "autoload-dev": {
         "psr-4": {
-            "Dbp\\Relay\\ValidationBundle\\Tests\\": "tests/"
+            "Dbp\\Relay\\VerityBundle\\Tests\\": "tests/"
         }
     },
     "config": {

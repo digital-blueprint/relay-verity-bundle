@@ -1,21 +1,21 @@
 services:
 
-  Dbp\Relay\ValidationBundle\Service\:
+  Dbp\Relay\VerityBundle\Service\:
     resource: '../../Service'
     autowire: true
     autoconfigure: true
 
-  Dbp\Relay\ValidationBundle\ApiResource\:
+  Dbp\Relay\VerityBundle\ApiResource\:
     resource: '../../ApiResource'
     autowire: true
     autoconfigure: true
 
-  Dbp\Relay\ValidationBundle\State\:
+  Dbp\Relay\VerityBundle\State\:
     resource: '../../State'
     autowire: true
     autoconfigure: true
 
-  Dbp\Relay\ValidationBundle\EventSubscriber\:
+  Dbp\Relay\VerityBundle\EventSubscriber\:
     resource: '../../EventSubscriber'
     autowire: true
     autoconfigure: true

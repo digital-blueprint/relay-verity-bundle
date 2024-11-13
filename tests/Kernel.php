@@ -2,11 +2,11 @@
 
 declare(strict_types=1);
 
-namespace Dbp\Relay\ValidationBundle\Tests;
+namespace Dbp\Relay\VerityBundle\Tests;
 
 use ApiPlatform\Symfony\Bundle\ApiPlatformBundle;
 use Dbp\Relay\CoreBundle\DbpRelayCoreBundle;
-use Dbp\Relay\ValidationBundle\DbpRelayValidationBundle;
+use Dbp\Relay\VerityBundle\DbpRelayVerityBundle;
 use Nelmio\CorsBundle\NelmioCorsBundle;
 use Symfony\Bundle\FrameworkBundle\FrameworkBundle;
 use Symfony\Bundle\FrameworkBundle\Kernel\MicroKernelTrait;
@@ -30,7 +30,7 @@ class Kernel extends BaseKernel
         yield new NelmioCorsBundle();
         yield new MonologBundle();
         yield new ApiPlatformBundle();
-        yield new DbpRelayValidationBundle();
+        yield new DbpRelayVerityBundle();
         yield new DbpRelayCoreBundle();
     }
 
@@ -48,11 +48,11 @@ class Kernel extends BaseKernel
             'annotations' => false,
         ]);
 
-        $container->extension('dbp_relay_validation', [
+        $container->extension('dbp_relay_verity', [
             'backends' => [
                 'dummy' => [
                     'url' => 'https://dummy.url/',
-                    'validator' => 'Dbp\Relay\ValidationBundle\Tests\Helper\DummyAPI',
+                    'validator' => 'Dbp\Relay\VerityBundle\Tests\Helper\DummyAPI',
                     'maxsize' => 8,
                 ],
             ],

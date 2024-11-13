@@ -2,9 +2,9 @@
 
 declare(strict_types=1);
 
-namespace Dbp\Relay\ValidationBundle\Helpers;
+namespace Dbp\Relay\VerityBundle\Helpers;
 
-class ValidationResult
+class VerityResult
 {
     public bool $validity = false;
     public string $message = '';

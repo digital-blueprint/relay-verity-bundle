@@ -2,25 +2,25 @@
 
 declare(strict_types=1);
 
-namespace Dbp\Relay\ValidationBundle\State;
+namespace Dbp\Relay\VerityBundle\State;
 
 use ApiPlatform\Metadata\Operation;
 use Dbp\Relay\CoreBundle\Rest\AbstractDataProvider;
-use Dbp\Relay\ValidationBundle\ApiResource\ValidationReport;
+use Dbp\Relay\VerityBundle\ApiResource\VerityReport;
 
 /**
- * @extends AbstractDataProvider<ValidationReport>
+ * @extends AbstractDataProvider<VerityReport>
  */
-class ValidationReportStateProvider extends AbstractDataProvider
+class VerityReportStateProvider extends AbstractDataProvider
 {
     public function provide(Operation $operation, array $uriVariables = [], array $context = []): object|array|null
     {
-        return new ValidationReport();
+        return new VerityReport();
     }
 
     protected function getItemById(string $id, array $filters = [], array $options = []): ?object
     {
-        return new ValidationReport('new-id-25');
+        return new VerityReport('new-id-25');
     }
 
     protected function getPage(int $currentPageNumber, int $maxNumItemsPerPage, array $filters = [], array $options = []): array

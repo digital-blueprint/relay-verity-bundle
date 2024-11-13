@@ -6,15 +6,15 @@ declare(strict_types=1);
  * PDF/A validation service.
  */
 
-namespace Dbp\Relay\ValidationBundle\Service;
+namespace Dbp\Relay\VerityBundle\Service;
 
-use Dbp\Relay\ValidationBundle\Helpers\ValidationResult;
+use Dbp\Relay\VerityBundle\Helpers\VerityResult;
 use Psr\Log\LoggerAwareInterface;
 use Psr\Log\LoggerAwareTrait;
 use Symfony\Contracts\HttpClient\Exception\TransportExceptionInterface;
 use Symfony\Contracts\HttpClient\HttpClientInterface;
 
-class PDFAValidationAPI implements ValidationProviderInterface, LoggerAwareInterface
+class PDFAValidationAPI implements VerityProviderInterface, LoggerAwareInterface
 {
     use LoggerAwareTrait;
 
@@ -30,20 +30,20 @@ class PDFAValidationAPI implements ValidationProviderInterface, LoggerAwareInter
         return ['validator-rule'];
     }
 
-    public function getVAlidationRequiredRole(string $profileName): string
+    public function getVerityRequiredRole(string $profileName): string
     {
-        // TODO: Implement getVAlidationRequiredRole() method.
+        // TODO: Implement getVerityRequiredRole() method.
         return 'validator-role';
     }
 
-    public function validate($fileContent, $filename, $flavour, $mimetype): ValidationResult
+    public function validate($fileContent, $filename, $flavour, $mimetype): VerityResult
     {
         // url
         $url = $this->serverUrl.'/api/validate/'.$flavour.'/';
         // Get the data size
         $fileSize = strlen($fileContent);
         if ($fileSize > $this->maxsize) {
-            return ValidationResult::failed($flavour, ['size exceeded maxsize: '.$this->maxsize]);
+            return VerityResult::failed($flavour, ['size exceeded maxsize: '.$this->maxsize]);
         }
 
         // Calculate the sha1 checksum
@@ -81,7 +81,7 @@ class PDFAValidationAPI implements ValidationProviderInterface, LoggerAwareInter
             }
         }
 
-        $result = new ValidationResult();
+        $result = new VerityResult();
         $result->profileNameRequested = $flavour;
 
         // Check if the request was successful

@@ -2,3 +2,4 @@ vendor/
 _coverage/
 .idea/
 var/
+.phpunit.cache/

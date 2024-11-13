@@ -2,23 +2,23 @@
 
 declare(strict_types=1);
 
-namespace Dbp\Relay\ValidationBundle\ApiResource;
+namespace Dbp\Relay\VerityBundle\ApiResource;
 
 use ApiPlatform\Metadata\ApiProperty;
 use ApiPlatform\Metadata\ApiResource;
 use ApiPlatform\Metadata\Get;
 use ApiPlatform\Metadata\Post;
-use Dbp\Relay\ValidationBundle\State\ValidationReportStateProcessor;
-use Dbp\Relay\ValidationBundle\State\ValidationReportStateProvider;
+use Dbp\Relay\VerityBundle\State\VerityReportStateProcessor;
+use Dbp\Relay\VerityBundle\State\VerityReportStateProvider;
 use Symfony\Component\Serializer\Attribute\Groups;
 
 #[ApiResource(
-    uriTemplate: '/validation/reports',
+    uriTemplate: '/verity/reports',
     shortName: 'Report',
     operations: [
         new Get(),
         new Post(
-            processor: ValidationReportStateProcessor::class,
+            processor: VerityReportStateProcessor::class,
         ),
     ],
     normalizationContext: ['groups' => ['report:read']],
@@ -26,9 +26,9 @@ use Symfony\Component\Serializer\Attribute\Groups;
     openapiContext: [
         'tags' => ['Validation'],
     ],
-    provider: ValidationReportStateProvider::class,
+    provider: VerityReportStateProvider::class,
 )]
-class ValidationReport
+class VerityReport
 {
     #[ApiProperty(identifier: true, example: 'cbe2a804-3948-4de9-b000-5cd65f657b2f')]
     public ?string $uuid;

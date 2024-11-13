@@ -2,16 +2,16 @@
 
 declare(strict_types=1);
 
-namespace Dbp\Relay\ValidationBundle\DependencyInjection;
+namespace Dbp\Relay\VerityBundle\DependencyInjection;
 
 use Dbp\Relay\CoreBundle\Extension\ExtensionTrait;
-use Dbp\Relay\ValidationBundle\Service\ConfigurationService;
+use Dbp\Relay\VerityBundle\Service\ConfigurationService;
 use Symfony\Component\Config\FileLocator;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\DependencyInjection\Loader\YamlFileLoader;
 use Symfony\Component\HttpKernel\DependencyInjection\ConfigurableExtension;
 
-class DbpRelayValidationExtension extends ConfigurableExtension
+class DbpRelayVerityExtension extends ConfigurableExtension
 {
     use ExtensionTrait;
 

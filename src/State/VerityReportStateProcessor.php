@@ -2,18 +2,18 @@
 
 declare(strict_types=1);
 
-namespace Dbp\Relay\ValidationBundle\State;
+namespace Dbp\Relay\VerityBundle\State;
 
 use Dbp\Relay\CoreBundle\Rest\AbstractDataProcessor;
-use Dbp\Relay\ValidationBundle\ApiResource\ValidationReport;
-use Dbp\Relay\ValidationBundle\Event\ValidateEvent;
-use Dbp\Relay\ValidationBundle\Service\ConfigurationService;
+use Dbp\Relay\VerityBundle\ApiResource\VerityReport;
+use Dbp\Relay\VerityBundle\Event\VerityEvent;
+use Dbp\Relay\VerityBundle\Service\ConfigurationService;
 use Symfony\Component\EventDispatcher\EventDispatcherInterface;
 use Symfony\Component\ExpressionLanguage\ExpressionLanguage;
 use Symfony\Component\HttpKernel\Exception\BadRequestHttpException;
 use Symfony\Contracts\HttpClient\HttpClientInterface;
 
-class ValidationReportStateProcessor extends AbstractDataProcessor
+class VerityReportStateProcessor extends AbstractDataProcessor
 {
     public function __construct(
         private readonly ConfigurationService $configurationService,
@@ -23,7 +23,7 @@ class ValidationReportStateProcessor extends AbstractDataProcessor
         parent::__construct();
     }
 
-    public function addItem($data, array $filters): mixed
+    public function addItem($data, array $filters): VerityReport
     {
 //        $this->denyAccessUnlessGranted('IS_AUTHENTICATED_FULLY');
 
@@ -77,7 +77,7 @@ class ValidationReportStateProcessor extends AbstractDataProcessor
         $expressionLanguage = new ExpressionLanguage();
         $validity = $expressionLanguage->evaluate($profile['rule'], $vars);
 
-        $report = new ValidationReport($data->uuid);
+        $report = new VerityReport($data->uuid);
         $report->setFilename($data->filename);
         $report->setData($data->data);
         $report->setProfile($data->profile);
@@ -89,7 +89,7 @@ class ValidationReportStateProcessor extends AbstractDataProcessor
             $report->setMessage('OK');
         }
 
-        $validateEvent = new ValidateEvent($report);
+        $validateEvent = new VerityEvent($report);
         $this->eventDispatcher->dispatch($validateEvent);
 
         return $report;

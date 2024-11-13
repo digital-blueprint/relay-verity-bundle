@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Dbp\Relay\ValidationBundle\Service;
+namespace Dbp\Relay\VerityBundle\Service;
 
 class ConfigurationService
 {

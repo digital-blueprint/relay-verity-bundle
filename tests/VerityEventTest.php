@@ -2,15 +2,15 @@
 
 declare(strict_types=1);
 
-namespace Dbp\Relay\ValidationBundle\Tests;
+namespace Dbp\Relay\VerityBundle\Tests;
 
-use Dbp\Relay\ValidationBundle\Event\ValidateEvent;
-use Dbp\Relay\ValidationBundle\Event\ValidationRequestEvent;
+use Dbp\Relay\VerityBundle\Event\VerityEvent;
+use Dbp\Relay\VerityBundle\Event\VerityRequestEvent;
 use Symfony\Bundle\FrameworkBundle\Test\KernelTestCase;
 use Symfony\Component\EventDispatcher\EventDispatcherInterface;
 use Symfony\Polyfill\Uuid\Uuid;
 
-class ValidateEventTest extends KernelTestCase
+class VerityEventTest extends KernelTestCase
 {
     private $dispatcher;
 
@@ -20,9 +20,9 @@ class ValidateEventTest extends KernelTestCase
         $container = static::getContainer();
 
         $this->dispatcher = $container->get(EventDispatcherInterface::class);
-        $this->dispatcher->addListener(ValidateEvent::class, static function (ValidateEvent $e) {
+        $this->dispatcher->addListener(VerityEvent::class, static function (VerityEvent $e) {
             echo '(+++ static function called +++)';
-            ValidateEventTest::$event = $e;
+            VerityEventTest::$event = $e;
         });
     }
 
@@ -31,7 +31,7 @@ class ValidateEventTest extends KernelTestCase
         $data = base64_encode('data...');
         $uuid = Uuid::uuid_create();
         $fileName = 'test-003.txt';
-        $event = new ValidationRequestEvent($uuid, $fileName, 'unit_test', $data);
+        $event = new VerityRequestEvent($uuid, $fileName, 'unit_test', $data);
 
         $result = $this->dispatcher->dispatch($event);
 
@@ -45,5 +45,5 @@ class ValidateEventTest extends KernelTestCase
         $this->assertEquals('OK', self::$event->getReport()->getMessage());
     }
 
-    public static ?ValidateEvent $event = null;
+    public static ?VerityEvent $event = null;
 }
