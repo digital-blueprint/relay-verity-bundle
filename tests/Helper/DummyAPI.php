@@ -17,16 +17,16 @@ class DummyAPI implements VerityProviderInterface, LoggerAwareInterface
     {
     }
 
-    public function validate(string $fileContent, string $filename, string $flavour, string $mimetype): VerityResult
+    public function validate(string $fileContent, string $filename, string $config, string $mimetype): VerityResult
     {
         // Get the data size
         $fileSize = strlen($fileContent);
         if ($fileSize > $this->maxsize) {
-            return VerityResult::failed($flavour, ['size exceeded maxsize: '.$this->maxsize]);
+            return VerityResult::failed($config, ['size exceeded maxsize: '.$this->maxsize]);
         }
 
         $result = new VerityResult();
-        $result->profileNameRequested = $flavour;
+        $result->profileNameRequested = $config;
         $result->validity = true;
         $result->message = 'OK';
 

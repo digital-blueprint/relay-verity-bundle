@@ -63,7 +63,7 @@ class Kernel extends BaseKernel
                     'checks' => [
                         'a' => [
                             'backend' => 'dummy',
-                            'flavour' => 'auto',
+                            'config' => '{}',
                         ],
                     ],
                 ],

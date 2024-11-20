@@ -63,15 +63,15 @@ class VerityReportStateProcessor extends AbstractDataProcessor
         $errors = [];
 
         foreach ($profile['checks'] as $name => $check) {
-            $flavour = $check['flavour'];
+            $config = $check['config'];
             $backend = $this->configurationService->getBackend($check['backend']);
             $className = $backend['validator'];
             $validator = new $className($backend['url'], $backend['maxsize'], $this->httpClient);
 
-            $vr = $validator->validate($content, $data->filename, $flavour, $mimetype);
+            $vr = $validator->validate($content, $data->filename, $config, $mimetype);
             $vars[$name] = $vr;
             if ($vr->errors) {
-                $e = array_map(static function ($error) use ($name, $flavour) { return "$name/$flavour: $error"; }, $vr->errors);
+                $e = array_map(static function ($error) use ($name) { return "$name: $error"; }, $vr->errors);
                 $errors = [...$errors, ...$e];
             }
         }

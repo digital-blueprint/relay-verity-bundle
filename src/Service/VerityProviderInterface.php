@@ -8,7 +8,13 @@ use Dbp\Relay\VerityBundle\Helpers\VerityResult;
 
 interface VerityProviderInterface
 {
-    public function validate(string $fileContent, string $filename, string $flavour, string $mimetype): VerityResult;
+    /**
+     * Perform the validation.
+     *
+     * @param string $fileContent the data/file content to validate
+     * @param string $config      JSON encoded, depends on the service/API
+     */
+    public function validate(string $fileContent, string $filename, string $config, string $mimetype): VerityResult;
 
     /**
      * The role required for signing with the given profile.

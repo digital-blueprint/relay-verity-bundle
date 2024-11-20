@@ -36,8 +36,13 @@ class PDFAValidationAPI implements VerityProviderInterface, LoggerAwareInterface
         return 'validator-role';
     }
 
-    public function validate($fileContent, $filename, $flavour, $mimetype): VerityResult
+    public function validate($fileContent, $filename, $config, $mimetype): VerityResult
     {
+        $checkConfig = json_decode($config, true);
+        if (!isset($checkConfig['flavour']) || $checkConfig['flavour'] === '') {
+            throw new \Exception("Required config key 'flavour' is missing.");
+        }
+        $flavour = $checkConfig['flavour'];
         // url
         $url = $this->serverUrl.'/api/validate/'.$flavour.'/';
         // Get the data size

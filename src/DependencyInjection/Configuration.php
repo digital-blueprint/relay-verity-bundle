@@ -57,7 +57,7 @@ class Configuration implements ConfigurationInterface
                                             ->isRequired()
                                             ->cannotBeEmpty()
                                         ->end()
-                                        ->scalarNode('flavour')
+                                        ->scalarNode('config')
                                             ->isRequired()
                                             ->cannotBeEmpty()
                                         ->end()
