@@ -11,6 +11,7 @@ class VerityRequestEvent extends Event
     public function __construct(
         public ?string $uuid,
         public ?string $filename,
+        public ?string $sha1sum,
         public ?string $profile,
         public ?string $data,
         public bool $valid = false,

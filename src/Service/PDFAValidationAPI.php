@@ -36,7 +36,7 @@ class PDFAValidationAPI implements VerityProviderInterface, LoggerAwareInterface
         return 'validator-role';
     }
 
-    public function validate($fileContent, $filename, $config, $mimetype): VerityResult
+    public function validate($fileContent, $filename, $sha1sum, $config, $mimetype): VerityResult
     {
         $checkConfig = json_decode($config, true);
         if (!isset($checkConfig['flavour']) || $checkConfig['flavour'] === '') {
@@ -53,6 +53,9 @@ class PDFAValidationAPI implements VerityProviderInterface, LoggerAwareInterface
 
         // Calculate the sha1 checksum
         $sha1_checksum = sha1($fileContent);
+        if ($sha1sum !== null && $sha1sum !== $sha1_checksum) {
+            return VerityResult::failed($flavour, ['given sha1sum does not match']);
+        }
 
         $fileHandle = fopen('data://text/plain,'.urlencode($fileContent), 'rb');
         stream_context_set_option($fileHandle, 'http', 'filename', $filename);

@@ -31,7 +31,7 @@ class VerityEventTest extends KernelTestCase
         $data = base64_encode('data...');
         $uuid = Uuid::uuid_create();
         $fileName = 'test-003.txt';
-        $event = new VerityRequestEvent($uuid, $fileName, 'unit_test', $data);
+        $event = new VerityRequestEvent($uuid, $fileName, null, 'unit_test', $data);
 
         $result = $this->dispatcher->dispatch($event);
 

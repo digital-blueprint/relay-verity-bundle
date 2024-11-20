@@ -25,7 +25,7 @@ class EventSubscriberTest extends KernelTestCase
     public function testEventSubscriber(): void
     {
         $data = base64_encode('data...');
-        $event = new VerityRequestEvent(Uuid::uuid_create(), 'test-001.txt', 'unit_test', $data);
+        $event = new VerityRequestEvent(Uuid::uuid_create(), 'test-001.txt', null, 'unit_test', $data);
 
         $result = $this->dispatcher->dispatch($event);
 
@@ -35,7 +35,7 @@ class EventSubscriberTest extends KernelTestCase
     public function testSizeExceeded(): void
     {
         $data = base64_encode('data.data.data.data.'); // more than 16 chars
-        $event = new VerityRequestEvent(Uuid::uuid_create(), 'test-002.txt', 'unit_test', $data);
+        $event = new VerityRequestEvent(Uuid::uuid_create(), 'test-002.txt', null, 'unit_test', $data);
 
         $result = $this->dispatcher->dispatch($event);
 
@@ -49,7 +49,7 @@ class EventSubscriberTest extends KernelTestCase
 
         $data = base64_encode('');
 
-        $event = new VerityRequestEvent(Uuid::uuid_create(), 'test-003.txt', 'unit_test', $data);
+        $event = new VerityRequestEvent(Uuid::uuid_create(), 'test-003.txt', null, 'unit_test', $data);
 
         $this->dispatcher->dispatch($event);
     }
@@ -59,7 +59,7 @@ class EventSubscriberTest extends KernelTestCase
         $this->expectException(BadRequestHttpException::class);
 
         $data = base64_encode('data...');
-        $event = new VerityRequestEvent(Uuid::uuid_create(), 'test-004.txt', '', $data);
+        $event = new VerityRequestEvent(Uuid::uuid_create(), 'test-004.txt', null, '', $data);
 
         $this->dispatcher->dispatch($event);
     }
@@ -69,7 +69,7 @@ class EventSubscriberTest extends KernelTestCase
         $this->expectException(BadRequestHttpException::class);
 
         $data = base64_encode('data...');
-        $event = new VerityRequestEvent(Uuid::uuid_create(), 'test-005.txt', 'unknown???', $data);
+        $event = new VerityRequestEvent(Uuid::uuid_create(), 'test-005.txt', null, 'unknown???', $data);
 
         $this->dispatcher->dispatch($event);
     }

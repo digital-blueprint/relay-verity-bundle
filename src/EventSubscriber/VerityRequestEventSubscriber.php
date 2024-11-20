@@ -28,6 +28,7 @@ class VerityRequestEventSubscriber implements EventSubscriberInterface
     {
         $verityReport = new VerityReport($event->uuid);
         $verityReport->setFilename($event->filename);
+        $verityReport->setSha1sum($event->sha1sum);
         $verityReport->setProfile($event->profile);
         $verityReport->setData($event->data);
 

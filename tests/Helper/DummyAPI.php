@@ -17,7 +17,7 @@ class DummyAPI implements VerityProviderInterface, LoggerAwareInterface
     {
     }
 
-    public function validate(string $fileContent, string $filename, string $config, string $mimetype): VerityResult
+    public function validate(string $fileContent, string $filename, ?string $sha1sum, string $config, string $mimetype): VerityResult
     {
         // Get the data size
         $fileSize = strlen($fileContent);

@@ -19,7 +19,7 @@ class VeraAPITest extends KernelTestCase
         $this->assertNotNull($veraApi);
 
         // Parameters in this call do not matter, always get the $validMockResponse.
-        $result = $veraApi->validate('', 'test-010.txt', '{"flavour": "unit_test"}', 'text/plain');
+        $result = $veraApi->validate('', 'test-010.txt', null, '{"flavour": "unit_test"}', 'text/plain');
 
         $this->assertEquals($result->message, 'PDF file is compliant with Validation Profile requirements.');
     }
@@ -32,7 +32,7 @@ class VeraAPITest extends KernelTestCase
         $this->assertNotNull($veraApi);
 
         // Parameters in this call do not matter, always get the $validMockResponse.
-        $result = $veraApi->validate('', 'test-010.txt', '{"flavour": "unit_test"}', 'text/plain');
+        $result = $veraApi->validate('', 'test-010.txt', null, '{"flavour": "unit_test"}', 'text/plain');
 
         $this->assertEquals($result->message, 'PDF file is not compliant with Validation Profile requirements.');
     }
@@ -45,7 +45,7 @@ class VeraAPITest extends KernelTestCase
         $this->assertNotNull($veraApi);
 
         // Parameters in this call do not matter, always get the $validMockResponse.
-        $result = $veraApi->validate('', 'test-010.txt', '{"flavour": "unit_test"}', 'text/plain');
+        $result = $veraApi->validate('', 'test-010.txt', null, '{"flavour": "unit_test"}', 'text/plain');
 
         $this->assertEquals($result->message, 'Network Error');
     }
@@ -59,7 +59,38 @@ class VeraAPITest extends KernelTestCase
 
         // Only the $data parameter in this call does matter.
         $data = base64_encode('data.data.data.data.'); // more than 16 chars
-        $result = $veraApi->validate($data, 'test-011.txt', '{"flavour": "unit_test"}', 'text/plain');
+        $result = $veraApi->validate($data, 'test-011.txt', null, '{"flavour": "unit_test"}', 'text/plain');
+
+        $this->assertEquals($result->message, 'Error', 'Error missing.');
+        $this->assertNotEmpty($result->errors, 'Error message missing.');
+    }
+
+    public function testCheckSumCorrect(): void
+    {
+        $httpClient = new MockHttpClient($this->validMockResponse());
+        $veraApi = new PDFAValidationAPI('http://localhost/', 16, $httpClient);
+
+        $this->assertNotNull($veraApi);
+
+        // Only the $data parameter in this call does matter.
+        $data = base64_encode('data.data.');
+        $cs = sha1($data);
+        $result = $veraApi->validate($data, 'test-011.txt', $cs, '{"flavour": "unit_test"}', 'text/plain');
+
+        $this->assertEquals($result->message, 'PDF file is compliant with Validation Profile requirements.');
+    }
+
+    public function testCheckSumIncorrect(): void
+    {
+        $httpClient = new MockHttpClient($this->validMockResponse());
+        $veraApi = new PDFAValidationAPI('http://localhost/', 16, $httpClient);
+
+        $this->assertNotNull($veraApi);
+
+        // Only the $data parameter in this call does matter.
+        $data = base64_encode('data.data.');
+        $cs = sha1($data.'make checksum fail.');
+        $result = $veraApi->validate($data, 'test-011.txt', $cs, '{"flavour": "unit_test"}', 'text/plain');
 
         $this->assertEquals($result->message, 'Error', 'Error missing.');
         $this->assertNotEmpty($result->errors, 'Error message missing.');

@@ -58,6 +58,7 @@ class VerityReportStateProcessor extends AbstractDataProcessor
         $document->mimetype = $mimetype;
         $document->size = $fileSize;
         $document->filename = $data->filename;
+        $document->sha1sum = $data->sha1sum;
 
         $vars = ['document' => $document];
         $errors = [];
@@ -68,7 +69,7 @@ class VerityReportStateProcessor extends AbstractDataProcessor
             $className = $backend['validator'];
             $validator = new $className($backend['url'], $backend['maxsize'], $this->httpClient);
 
-            $vr = $validator->validate($content, $data->filename, $config, $mimetype);
+            $vr = $validator->validate($content, $data->filename, $data->sha1sum,  $config, $mimetype);
             $vars[$name] = $vr;
             if ($vr->errors) {
                 $e = array_map(static function ($error) use ($name) { return "$name: $error"; }, $vr->errors);
