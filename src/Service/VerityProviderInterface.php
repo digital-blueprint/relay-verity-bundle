@@ -12,14 +12,15 @@ interface VerityProviderInterface
      * Perform the validation.
      *
      * @param string $fileContent the data/file content to validate
-     * @param string $config      JSON encoded, depends on the service/API
+     * @param string $fileName    the name associated with the file content
+     * @param int    $fileSize    the size of the file content
+     * @param string $sha1sum     the mandatory sha1 hash of the file content
+     * @param string $mimetype    the mimetype of the file content
      */
-    public function validate(string $fileContent, string $filename, ?string $sha1sum, string $config, string $mimetype): VerityResult;
-
-    /**
-     * The role required for signing with the given profile.
-     *
-     * @throws \Exception
-     */
-    public function getVerityRequiredRole(string $profileName): string;
+    public function validate(string $fileContent,
+        string $fileName,
+        int $fileSize,
+        string $sha1sum,
+        string $config,
+        string $mimetype): VerityResult;
 }

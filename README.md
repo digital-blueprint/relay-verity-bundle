@@ -93,10 +93,15 @@ composer update dbp/relay-verity-bundle
 
 #### POST
 
-| relay:errorId                | Status code | Description                                     | relay:errorDetails | Example                          |
-|------------------------------|-------------|-------------------------------------------------|--------------------|----------------------------------|
-| `verity:report-not-created`  | 500         | The submission could not be created.            | `message`          | `['message' => 'Error message']` |
-| `verity:report-invalid-json` | 422         | The dataFeedElement doesn't contain valid json. | `message`          |                                  |
+| relay:errorId                             | Status code | Description                                             |
+|-------------------------------------------|-------------|---------------------------------------------------------|
+| 'verity:create-report-missing-profile'    | 400         | Unknown profile "$profileName"!                         |
+| 'verity:create-report-missing-file'       | 400         | No file with parameter key "file" was received!         |
+| 'verity:create-report-file-hash-mismatch' | 400         | Parameter file hash mismatch.                           |
+| 'verity:create-report-file-size-zero'     | 400         | Parameter file size is 0 (zero).                        |
+| 'verity:create-report-file-content-empty' | 400         | File content is empty.                                  |
+| 'verity:create-report-file-size-mismatch' | 400         | Parameter file size mismatch.                           |
+| 'verity:create-report-file-size-exceeded' | 400         | $profileName Size exceeded maxsize: $backend['maxsize'] |
 
 ### `/verity/reports/{identifier}`
 

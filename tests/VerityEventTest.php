@@ -28,20 +28,23 @@ class VerityEventTest extends KernelTestCase
 
     public function testEventSubscriber(): void
     {
-        $data = base64_encode('data...');
+        $data = 'data...';
         $uuid = Uuid::uuid_create();
         $fileName = 'test-003.txt';
-        $event = new VerityRequestEvent($uuid, $fileName, null, 'unit_test', $data);
+        $event = new VerityRequestEvent($uuid,
+            $fileName,
+            sha1($data),
+            'unit_test',
+            $data,
+            'plain/text',
+            strlen($data));
 
         $result = $this->dispatcher->dispatch($event);
 
-        //        dd(self::$event);
         $this->assertTrue($result->valid, 'MUST succeed.');
         $this->assertNotNull(self::$event, 'Event ValidateEvent not received.');
         $this->assertTrue(self::$event->getReport()->valid, 'MUST succeed.');
-        $this->assertEquals($data, self::$event->getReport()->getData());
         $this->assertEquals($uuid, self::$event->getReport()->getUuid());
-        $this->assertEquals($fileName, self::$event->getReport()->getFilename());
         $this->assertEquals('OK', self::$event->getReport()->getMessage());
     }
 

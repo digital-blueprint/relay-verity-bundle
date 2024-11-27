@@ -10,10 +10,12 @@ class VerityRequestEvent extends Event
 {
     public function __construct(
         public ?string $uuid,
-        public ?string $filename,
-        public ?string $sha1sum,
-        public ?string $profile,
-        public ?string $data,
+        public ?string $fileName,
+        public ?string $fileHash,
+        public ?string $profileName,
+        public ?string $fileContent = null,
+        public ?string $mimetype = null,
+        public int $fileSize = 0,
         public bool $valid = false,
         public string $message = '',
         public array $errors = [])

@@ -20,52 +20,22 @@ class PDFAValidationAPI implements VerityProviderInterface, LoggerAwareInterface
 
     public function __construct(
         private readonly string $serverUrl,
-        private readonly int $maxsize,
         private readonly HttpClientInterface $httpClient)
     {
     }
 
-    public function getValidationRules(): array
-    {
-        return ['validator-rule'];
-    }
-
-    public function getVerityRequiredRole(string $profileName): string
-    {
-        // TODO: Implement getVerityRequiredRole() method.
-        return 'validator-role';
-    }
-
-    public function validate($fileContent, $filename, $sha1sum, $config, $mimetype): VerityResult
+    public function validate($fileContent, $fileName, $fileSize, $sha1sum, $config, $mimetype): VerityResult
     {
         $checkConfig = json_decode($config, true);
         if (!isset($checkConfig['flavour']) || $checkConfig['flavour'] === '') {
             throw new \Exception("Required config key 'flavour' is missing.");
         }
         $flavour = $checkConfig['flavour'];
-        // url
         $url = $this->serverUrl.'/api/validate/'.$flavour.'/';
-        // Get the data size
-        $fileSize = strlen($fileContent);
-        if ($fileSize > $this->maxsize) {
-            return VerityResult::failed($flavour, ['size exceeded maxsize: '.$this->maxsize]);
-        }
-
-        // Calculate the sha1 checksum
-        $sha1_checksum = sha1($fileContent);
-        if ($sha1sum !== null && $sha1sum !== $sha1_checksum) {
-            return VerityResult::failed($flavour, ['given sha1sum does not match']);
-        }
 
         $fileHandle = fopen('data://text/plain,'.urlencode($fileContent), 'rb');
-        stream_context_set_option($fileHandle, 'http', 'filename', $filename);
+        stream_context_set_option($fileHandle, 'http', 'filename', $fileName);
         stream_context_set_option($fileHandle, 'http', 'content_type', $mimetype);
-
-        // Prepare the data for the API request
-        $data = [
-            'sha1Hex' => $sha1_checksum,
-            'file' => $fileHandle,
-        ];
 
         $response = null;
         try {
@@ -75,7 +45,10 @@ class PDFAValidationAPI implements VerityProviderInterface, LoggerAwareInterface
                     'X-File-Size: '.$fileSize,
                     'Content-Type: multipart/form-data',
                 ],
-                'body' => $data,
+                'body' => [
+                    'sha1Hex' => $sha1sum,
+                    'file' => $fileHandle,
+                ],
             ]);
             $statusCode = $response->getStatusCode();
             $content = $response->getContent(false);

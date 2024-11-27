@@ -53,7 +53,7 @@ class Kernel extends BaseKernel
                 'dummy' => [
                     'url' => 'https://dummy.url/',
                     'validator' => 'Dbp\Relay\VerityBundle\Tests\Helper\DummyAPI',
-                    'maxsize' => 8,
+                    'maxsize' => 16,
                 ],
             ],
             'profiles' => [

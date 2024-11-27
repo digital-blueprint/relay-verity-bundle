@@ -13,28 +13,17 @@ class DummyAPI implements VerityProviderInterface, LoggerAwareInterface
 {
     use LoggerAwareTrait;
 
-    public function __construct(private readonly string $serverUrl, private readonly int $maxsize)
+    public function __construct()
     {
     }
 
-    public function validate(string $fileContent, string $filename, ?string $sha1sum, string $config, string $mimetype): VerityResult
+    public function validate(string $fileContent, string $fileName, int $fileSize, ?string $sha1sum, string $config, string $mimetype): VerityResult
     {
-        // Get the data size
-        $fileSize = strlen($fileContent);
-        if ($fileSize > $this->maxsize) {
-            return VerityResult::failed($config, ['size exceeded maxsize: '.$this->maxsize]);
-        }
-
         $result = new VerityResult();
         $result->profileNameRequested = $config;
         $result->validity = true;
         $result->message = 'OK';
 
         return $result;
-    }
-
-    public function getVerityRequiredRole(string $profileName): string
-    {
-        return 'validator-role';
     }
 }
