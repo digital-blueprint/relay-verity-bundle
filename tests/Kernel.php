@@ -51,9 +51,7 @@ class Kernel extends BaseKernel
         $container->extension('dbp_relay_verity', [
             'backends' => [
                 'dummy' => [
-                    'url' => 'https://dummy.url/',
                     'validator' => 'Dbp\Relay\VerityBundle\Tests\Helper\DummyAPI',
-                    'maxsize' => 16,
                 ],
             ],
             'profiles' => [

@@ -6,11 +6,11 @@ namespace Dbp\Relay\VerityBundle\State;
 
 use Dbp\Relay\CoreBundle\Rest\AbstractDataProcessor;
 use Dbp\Relay\VerityBundle\ApiResource\VerityReport;
-use Dbp\Relay\VerityBundle\Service\ValidationService;
+use Dbp\Relay\VerityBundle\Service\VerityService;
 
 class VerityReportStateProcessor extends AbstractDataProcessor
 {
-    public function __construct(private readonly ValidationService $validationService)
+    public function __construct(private readonly VerityService $validationService)
     {
         parent::__construct();
     }

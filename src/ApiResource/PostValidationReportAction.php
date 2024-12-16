@@ -6,7 +6,7 @@ namespace Dbp\Relay\VerityBundle\ApiResource;
 
 use Dbp\Relay\CoreBundle\Exception\ApiError;
 use Dbp\Relay\CoreBundle\Rest\CustomControllerTrait;
-use Dbp\Relay\VerityBundle\Service\ValidationService;
+use Dbp\Relay\VerityBundle\Service\VerityService;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\File\File;
 use Symfony\Component\HttpFoundation\Request;
@@ -18,7 +18,7 @@ class PostValidationReportAction extends AbstractController
     use CustomControllerTrait;
 
     public function __construct(
-        private readonly ValidationService $validationService)
+        private readonly VerityService $validationService)
     {
     }
 

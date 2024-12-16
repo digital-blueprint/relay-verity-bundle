@@ -38,9 +38,7 @@ content:
 dbp_relay_verity:
   backends:
     pdfa:
-      url: '%env(VERA_PDF_URI)%'
-      validator: 'Dbp\Relay\VerityBundle\Service\PDFAValidationAPI'
-      maxsize: 33554432
+      validator: 'Dbp\Relay\VerityConnectorVerapdfBundle\Service\PDFAValidationAPI'
     
   profiles:
     archive:
@@ -60,7 +58,7 @@ There are two sections in this bundle configuration:
 1. `backends` for the configuration of backend services
 2. `profiles` for the checks available via the API
 
-In this example, a **backend** with the name `pdfa` is implemented by the PHP class `PDFAValidationAPI` with settings for the external `url` and the maximum allowed file size `maxsize` for files (binary, not base64).
+In this example, a **backend** with the name `pdfa` is implemented by the PHP class `PDFAValidationAPI`.
 There is also a **profile** defines with the name `archive`. A profile performs all `checks` and stores the results (the `validity` and also `errors`) in a variable named like the **check**, here `pdfa` and `pdfa_b2`. Each check has the name of its `backend` to use and a `flavour` to set the type of check to perform. 
 The results of all checks are then evaluated by the `rule` of the profile. The syntax of the rule is almost PHP syntax, but before any function is available, they must be registered first!
 
@@ -93,15 +91,15 @@ composer update dbp/relay-verity-bundle
 
 #### POST
 
-| relay:errorId                             | Status code | Description                                             |
-|-------------------------------------------|-------------|---------------------------------------------------------|
-| 'verity:create-report-missing-profile'    | 400         | Unknown profile "$profileName"!                         |
-| 'verity:create-report-missing-file'       | 400         | No file with parameter key "file" was received!         |
-| 'verity:create-report-file-hash-mismatch' | 400         | Parameter file hash mismatch.                           |
-| 'verity:create-report-file-size-zero'     | 400         | Parameter file size is 0 (zero).                        |
-| 'verity:create-report-file-content-empty' | 400         | File content is empty.                                  |
-| 'verity:create-report-file-size-mismatch' | 400         | Parameter file size mismatch.                           |
-| 'verity:create-report-file-size-exceeded' | 400         | $profileName Size exceeded maxsize: $backend['maxsize'] |
+| relay:errorId                             | Status code | Description                                     |
+|-------------------------------------------|-------------|-------------------------------------------------|
+| 'verity:create-report-missing-profile'    | 400         | Unknown profile "$profileName"!                 |
+| 'verity:create-report-missing-file'       | 400         | No file with parameter key "file" was received! |
+| 'verity:create-report-file-hash-mismatch' | 400         | Parameter file hash mismatch.                   |
+| 'verity:create-report-file-size-zero'     | 400         | Parameter file size is 0 (zero).                |
+| 'verity:create-report-file-content-empty' | 400         | File content is empty.                          |
+| 'verity:create-report-file-size-mismatch' | 400         | Parameter file size mismatch.                   |
+| 'verity:create-report-backend-exception'  | 400         | $profileName throws an exception                |
 
 ### `/verity/reports/{identifier}`
 

@@ -6,14 +6,14 @@ namespace Dbp\Relay\VerityBundle\EventSubscriber;
 
 use Dbp\Relay\VerityBundle\ApiResource\VerityReport;
 use Dbp\Relay\VerityBundle\Event\VerityRequestEvent;
-use Dbp\Relay\VerityBundle\Service\ValidationService;
+use Dbp\Relay\VerityBundle\Service\VerityService;
 use Symfony\Component\EventDispatcher\Attribute\AsEventListener;
 use Symfony\Component\EventDispatcher\EventSubscriberInterface;
 
 #[AsEventListener]
 class VerityRequestEventSubscriber implements EventSubscriberInterface
 {
-    public function __construct(private readonly ValidationService $validationService)
+    public function __construct(private readonly VerityService $validationService)
     {
     }
 

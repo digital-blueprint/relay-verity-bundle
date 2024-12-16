@@ -14,7 +14,7 @@ use Symfony\Component\ExpressionLanguage\ExpressionLanguage;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Contracts\HttpClient\HttpClientInterface;
 
-class ValidationService implements LoggerAwareInterface
+class VerityService implements LoggerAwareInterface
 {
     use LoggerAwareTrait;
 
@@ -23,7 +23,8 @@ class ValidationService implements LoggerAwareInterface
     public function __construct(
         private readonly EventDispatcherInterface $eventDispatcher,
         private readonly ConfigurationService $configurationService,
-        private readonly HttpClientInterface $httpClient)
+        private readonly HttpClientInterface $httpClient,
+        private readonly VerityProviderInterfaceService $verityProviderInterfaceService)
     {
         $this->expressionLanguage = new ExpressionLanguage();
     }
@@ -81,16 +82,18 @@ class ValidationService implements LoggerAwareInterface
 
         foreach ($profile['checks'] as $name => $check) {
             $backend = $this->configurationService->getBackend($check['backend']);
-            if ($fileSize > $backend['maxsize']) {
-                throw ApiError::withDetails(Response::HTTP_BAD_REQUEST,
-                    $profileName.': Size exceeded maxsize: '.$backend['maxsize'],
-                    'verity:create-report-file-size-exceeded');
-            }
-            $config = $check['config'];
             $className = $backend['validator'];
-            $validator = new $className($backend['url'], $this->httpClient);
+            $validator = $this->verityProviderInterfaceService->getService($className);
+            $config = $check['config'];
 
-            $vr = $validator->validate($fileContent, $fileName, $fileSize, $fileHash, $config, $mimetype);
+            try {
+                $vr = $validator->validate($fileContent, $fileName, $fileSize, $fileHash, $config, $mimetype);
+            } catch (\Exception $e) {
+                throw ApiError::withDetails(Response::HTTP_BAD_REQUEST,
+                    $e->getMessage(),
+                    'verity:create-report-backend-exception');
+
+            }
             $vars[$name] = $vr;
             if ($vr->errors) {
                 $e = array_map(static function ($error) use ($name) { return "$name: $error"; }, $vr->errors);
