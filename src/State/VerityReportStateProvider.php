@@ -30,8 +30,6 @@ class VerityReportStateProvider extends AbstractDataProvider
     }
 
     /**
-     * @return array
-     *
      * @psalm-return array<never, never>
      */
     protected function getPage(int $currentPageNumber, int $maxNumItemsPerPage, array $filters = [], array $options = []): array
