@@ -7,7 +7,7 @@ namespace Dbp\Relay\VerityBundle\Helpers;
 /**
  * Get the mimetype of the content of a string.
  */
-function getMimetype($content): ?string
+function getMimetype($content): string
 {
     $fileInfo = new \finfo(FILEINFO_MIME_TYPE);
     $result = $fileInfo->buffer($content);

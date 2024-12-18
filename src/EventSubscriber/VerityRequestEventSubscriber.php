@@ -17,6 +17,11 @@ class VerityRequestEventSubscriber implements EventSubscriberInterface
     {
     }
 
+    /**
+     * @return string[]
+     *
+     * @psalm-return array{'Dbp\\Relay\\VerityBundle\\Event\\VerityRequestEvent'::class: 'onVerityRequest'}
+     */
     public static function getSubscribedEvents(): array
     {
         return [
