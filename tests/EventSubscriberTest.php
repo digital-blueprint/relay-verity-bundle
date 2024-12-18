@@ -6,6 +6,7 @@ namespace Dbp\Relay\VerityBundle\Tests;
 
 use Dbp\Relay\CoreBundle\Exception\ApiError;
 use Dbp\Relay\VerityBundle\Event\VerityRequestEvent;
+use Dbp\Relay\VerityBundle\Service\DummyAPI;
 use Symfony\Bundle\FrameworkBundle\Test\KernelTestCase;
 use Symfony\Component\EventDispatcher\EventDispatcherInterface;
 use Symfony\Polyfill\Uuid\Uuid;
@@ -40,6 +41,7 @@ class EventSubscriberTest extends KernelTestCase
 
     public function testSizeExceeded(): void
     {
+        DummyAPI::$maxsize = 16;
         $data = 'data.data.data.data.'; // more than 16 chars
         try {
             $event = new VerityRequestEvent(Uuid::uuid_create(),
@@ -53,7 +55,7 @@ class EventSubscriberTest extends KernelTestCase
             $result = $this->dispatcher->dispatch($event);
             $this->fail('Exception should have been thrown.');
         } catch (ApiError $exception) {
-            $this->assertEquals('verity:create-report-file-size-exceeded', $exception->getErrorId());
+            $this->assertEquals('verity:create-report-backend-exception', $exception->getErrorId());
         }
     }
 
@@ -81,7 +83,7 @@ class EventSubscriberTest extends KernelTestCase
         $data = 'data';
         try {
             $event = new VerityRequestEvent(Uuid::uuid_create(),
-                'test-003.txt',
+                'test-004.txt',
                 null,
                 'unit_test',
                 $data,
@@ -100,7 +102,7 @@ class EventSubscriberTest extends KernelTestCase
         $data = 'data...';
         try {
             $event = new VerityRequestEvent(Uuid::uuid_create(),
-                'test-004.txt',
+                'test-005.txt',
                 null,
                 '',
                 $data,
@@ -119,7 +121,7 @@ class EventSubscriberTest extends KernelTestCase
         $data = 'data...';
         try {
             $event = new VerityRequestEvent(Uuid::uuid_create(),
-                'test-005.txt',
+                'test-006.txt',
                 null,
                 'unknown???',
                 $data,
@@ -137,7 +139,7 @@ class EventSubscriberTest extends KernelTestCase
     {
         $data = 'data...';
         $event = new VerityRequestEvent(Uuid::uuid_create(),
-            'test-006.txt',
+            'test-007.txt',
             sha1($data),
             'unit_test',
             $data,
@@ -154,7 +156,7 @@ class EventSubscriberTest extends KernelTestCase
         $data = 'data...';
         try {
             $event = new VerityRequestEvent(Uuid::uuid_create(),
-                'test-007.txt',
+                'test-008.txt',
                 sha1($data.'!!!'),
                 'unit_test',
                 $data,

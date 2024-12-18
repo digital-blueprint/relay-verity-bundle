@@ -7,6 +7,7 @@ namespace Dbp\Relay\VerityBundle\Tests;
 use ApiPlatform\Symfony\Bundle\ApiPlatformBundle;
 use Dbp\Relay\CoreBundle\DbpRelayCoreBundle;
 use Dbp\Relay\VerityBundle\DbpRelayVerityBundle;
+use Dbp\Relay\VerityBundle\Service\VerityProviderInterfaceServiceCompilerPass;
 use Nelmio\CorsBundle\NelmioCorsBundle;
 use Symfony\Bundle\FrameworkBundle\FrameworkBundle;
 use Symfony\Bundle\FrameworkBundle\Kernel\MicroKernelTrait;
@@ -14,6 +15,7 @@ use Symfony\Bundle\MonologBundle\MonologBundle;
 use Symfony\Bundle\SecurityBundle\SecurityBundle;
 use Symfony\Bundle\TwigBundle\TwigBundle;
 use Symfony\Component\Config\Loader\LoaderInterface;
+use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\DependencyInjection\Loader\Configurator\ContainerConfigurator;
 use Symfony\Component\HttpKernel\Kernel as BaseKernel;
 use Symfony\Component\Routing\Loader\Configurator\RoutingConfigurator;
@@ -51,7 +53,7 @@ class Kernel extends BaseKernel
         $container->extension('dbp_relay_verity', [
             'backends' => [
                 'dummy' => [
-                    'validator' => 'Dbp\Relay\VerityBundle\Tests\Helper\DummyAPI',
+                    'validator' => 'Dbp\Relay\VerityBundle\Service\DummyAPI',
                 ],
             ],
             'profiles' => [

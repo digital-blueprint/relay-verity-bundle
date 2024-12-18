@@ -92,7 +92,6 @@ class VerityService implements LoggerAwareInterface
                 throw ApiError::withDetails(Response::HTTP_BAD_REQUEST,
                     $e->getMessage(),
                     'verity:create-report-backend-exception');
-
             }
             $vars[$name] = $vr;
             if ($vr->errors) {
