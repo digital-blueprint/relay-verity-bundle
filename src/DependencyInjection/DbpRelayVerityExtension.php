@@ -17,6 +17,8 @@ class DbpRelayVerityExtension extends ConfigurableExtension
 
     public function loadInternal(array $mergedConfig, ContainerBuilder $container): void
     {
+        $this->addResourceClassDirectory($container, __DIR__.'/../ApiResource');
+
         $loader = new YamlFileLoader(
             $container,
             new FileLocator(__DIR__.'/../Resources/config')

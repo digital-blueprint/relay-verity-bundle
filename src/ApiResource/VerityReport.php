@@ -8,6 +8,8 @@ use ApiPlatform\Metadata\ApiProperty;
 use ApiPlatform\Metadata\ApiResource;
 use ApiPlatform\Metadata\Get;
 use ApiPlatform\Metadata\Post;
+use ApiPlatform\OpenApi\Model\Operation;
+use ApiPlatform\OpenApi\Model\RequestBody;
 use ApiPlatform\Symfony\Action\NotFoundAction;
 use Dbp\Relay\VerityBundle\State\VerityReportStateProvider;
 use Symfony\Component\HttpFoundation\File\File;
@@ -30,10 +32,10 @@ use Symfony\Component\Serializer\Attribute\Groups;
                 'jsonld' => 'application/ld+json',
             ],
             controller: PostValidationReportAction::class,
-            openapiContext: [
-                'parameters' => [],
-                'requestBody' => [
-                    'content' => [
+            openapi: new Operation(
+                parameters: [],
+                requestBody: new RequestBody(
+                    content: new \ArrayObject([
                         'multipart/form-data' => [
                             'schema' => [
                                 'type' => 'object',
@@ -61,9 +63,9 @@ use Symfony\Component\Serializer\Attribute\Groups;
                                 ],
                             ],
                         ],
-                    ],
-                ],
-            ],
+                    ])
+                )
+            ),
             security: 'is_granted("IS_AUTHENTICATED_FULLY")',
             deserialize: false,
         ),
@@ -71,8 +73,6 @@ use Symfony\Component\Serializer\Attribute\Groups;
     outputFormats: ['jsonld' => ['application/ld+jason']],
     normalizationContext: ['groups' => ['report:read']],
     denormalizationContext: ['groups' => ['report:write']],
-    openapiContext: [
-    ],
     provider: VerityReportStateProvider::class,
 )]
 class VerityReport
