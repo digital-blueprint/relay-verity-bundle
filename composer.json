@@ -10,12 +10,18 @@
         "ext-json": "*",
         "api-platform/core": "^3.4 || ^4.1",
         "dbp/relay-core-bundle": "^0.1.210",
+        "psr/log": "^2.0 || ^3.0",
         "symfony/config": "^6.4",
         "symfony/dependency-injection": "^6.4",
+        "symfony/event-dispatcher": "^6.4",
+        "symfony/event-dispatcher-contracts": "^2.5 || ^3.5",
         "symfony/expression-language": "^6.4",
         "symfony/framework-bundle": "^6.4",
         "symfony/http-client": "^6.4",
-        "symfony/http-kernel": "^6.4"
+        "symfony/http-client-contracts": "^2.5 || ^3.5",
+        "symfony/http-foundation": "^6.4",
+        "symfony/http-kernel": "^6.4",
+        "symfony/serializer": "^6.4"
     },
     "require-dev": {
         "friendsofphp/php-cs-fixer": "^3.50",
