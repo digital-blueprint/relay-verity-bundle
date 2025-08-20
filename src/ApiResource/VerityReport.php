@@ -70,7 +70,7 @@ use Symfony\Component\Serializer\Attribute\Groups;
             deserialize: false,
         ),
     ],
-    outputFormats: ['jsonld' => ['application/ld+jason']],
+    outputFormats: ['jsonld' => ['application/ld+json']],
     normalizationContext: ['groups' => ['report:read']],
     denormalizationContext: ['groups' => ['report:write']],
     provider: VerityReportStateProvider::class,
