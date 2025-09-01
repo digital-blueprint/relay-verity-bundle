@@ -1,7 +1,7 @@
 # Configuration
 ## Backends
 `backends` define the validator used to check for validity. Currently, there is a [pdfa validator with veraPDF](https://github.com/digital-blueprint/relay-verity-connector-verapdf-bundle) and a [anti-virus validator with clamAV](https://github.com/digital-blueprint/relay-verity-connector-clamav-bundle) available.
-Each backend defines the name of the backend, and the used validator as shown in the [example](example).
+Each backend defines the name of the backend, and the used validator as shown in the [example](#example).
 
 ```yaml
   backends:
