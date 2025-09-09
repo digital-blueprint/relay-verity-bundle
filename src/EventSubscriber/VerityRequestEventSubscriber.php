@@ -33,7 +33,7 @@ class VerityRequestEventSubscriber implements EventSubscriberInterface
     {
         $report = $this->validationService->validate(
             $event->uuid,
-            $event->fileContent,
+            $event->file,
             $event->fileName,
             $event->fileSize,
             $event->fileHash,

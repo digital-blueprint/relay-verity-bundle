@@ -9,6 +9,7 @@ use Psr\Log\LoggerAwareInterface;
 use Psr\Log\LoggerAwareTrait;
 use Symfony\Component\DependencyInjection\Attribute\AutoconfigureTag;
 use Symfony\Component\DependencyInjection\Attribute\When;
+use Symfony\Component\HttpFoundation\File\File;
 
 #[When(env: 'test')]
 #[AutoconfigureTag('dbp.relay.veritybundle.service')]
@@ -25,9 +26,9 @@ class DummyAPI implements VerityProviderInterface, LoggerAwareInterface
     /**
      * @throws \Exception
      */
-    public function validate(string $fileContent, string $fileName, int $fileSize, ?string $sha1sum, string $config, string $mimetype): VerityResult
+    public function validate(File $file, string $fileName, int $fileSize, ?string $sha1sum, string $config, string $mimetype): VerityResult
     {
-        if (strlen($fileContent) > self::$maxsize) {
+        if ($file->getSize() > self::$maxsize) {
             $maxsize = self::$maxsize;
             throw new \Exception("File size exceeded maxsize: {$fileSize} > {$maxsize}");
         }

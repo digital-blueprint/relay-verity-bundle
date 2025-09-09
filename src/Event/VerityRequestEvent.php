@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace Dbp\Relay\VerityBundle\Event;
 
+use Symfony\Component\HttpFoundation\File\File;
 use Symfony\Contracts\EventDispatcher\Event;
 
 class VerityRequestEvent extends Event
@@ -13,7 +14,7 @@ class VerityRequestEvent extends Event
         public ?string $fileName,
         public ?string $fileHash,
         public ?string $profileName,
-        public ?string $fileContent = null,
+        public ?File $file = null,
         public ?string $mimetype = null,
         public int $fileSize = 0,
         public bool $valid = false,

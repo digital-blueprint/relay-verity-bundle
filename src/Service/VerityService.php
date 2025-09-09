@@ -45,7 +45,7 @@ class VerityService implements LoggerAwareInterface
         return 'validator-role';
     }
 
-    public function validate($uuid, $fileContent, $fileName, $fileSize, $fileHash, $profileName, $mimetype): VerityReport
+    public function validate($uuid, $file, $fileName, $fileSize, $fileHash, $profileName, $mimetype): VerityReport
     {
         $profile = $this->configurationService->getProfile($profileName);
         if ($profile === null) {
@@ -59,17 +59,17 @@ class VerityService implements LoggerAwareInterface
                 'Parameter file size is 0 (zero).',
                 'verity:create-report-file-size-zero');
         }
-        if ($fileContent === null || $fileContent === '') {
+        if ($file === null || $file === '') {
             throw ApiError::withDetails(Response::HTTP_BAD_REQUEST,
                 'File content is empty.',
                 'verity:create-report-file-content-empty');
         }
-        if ($fileSize !== strlen($fileContent)) {
+        if ($fileSize !== $file->getSize()) {
             throw ApiError::withDetails(Response::HTTP_BAD_REQUEST,
                 'Parameter file size mismatch.',
                 'verity:create-report-file-size-mismatch');
         }
-        if ($fileHash !== null && $fileHash !== sha1($fileContent)) {
+        if ($fileHash !== null && $fileHash !== hash_file('sha1', $file->getPathname())) {
             throw ApiError::withDetails(Response::HTTP_BAD_REQUEST,
                 'Parameter file hash mismatch.',
                 'verity:create-report-file-hash-mismatch');
@@ -84,7 +84,6 @@ class VerityService implements LoggerAwareInterface
 
         $vars = ['document' => $document];
         $errors = [];
-
         foreach ($profile['checks'] as $name => $check) {
             $backend = $this->configurationService->getBackend($check['backend']);
             $className = $backend['validator'];
@@ -92,7 +91,7 @@ class VerityService implements LoggerAwareInterface
             $config = $check['config'];
 
             try {
-                $vr = $validator->validate($fileContent, $fileName, $fileSize, $fileHash, $config, $mimetype);
+                $vr = $validator->validate($file, $fileName, $fileSize, $fileHash, $config, $mimetype);
             } catch (\Exception $e) {
                 throw ApiError::withDetails(Response::HTTP_BAD_REQUEST,
                     $e->getMessage(),
@@ -106,7 +105,6 @@ class VerityService implements LoggerAwareInterface
         }
 
         $validity = $this->expressionLanguage->evaluate($profile['rule'], $vars);
-
         $report = new VerityReport($uuid);
         $report->setProfile($profileName);
         $report->setValid($validity);
