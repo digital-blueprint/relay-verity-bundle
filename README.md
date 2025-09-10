@@ -1,4 +1,4 @@
-# DbpRelayVeritasBundle
+# DbpRelayVerityBundle
 
 [GitHub](https://gitlab.tugraz.at/398EE57581B44C9A/dbp-relay-verity) |
 [Packagist](https://packagist.org/packages/dbp/relay-verity-bundle)
@@ -47,10 +47,10 @@ dbp_relay_verity:
       checks:
         pdfa:
           backend: 'pdfa'
-          flavour: 'auto'
+          config: '{"flavour": "1b"}'
         pdfa_b2:
           backend: 'pdfa'
-          flavour: 'b2'
+          config: '{"flavour": "2b"}'
 ```
 
 There are two sections in this bundle configuration:
@@ -59,7 +59,7 @@ There are two sections in this bundle configuration:
 2. `profiles` for the checks available via the API
 
 In this example, a **backend** with the name `pdfa` is implemented by the PHP class `PDFAValidationAPI`.
-There is also a **profile** defines with the name `archive`. A profile performs all `checks` and stores the results (the `validity` and also `errors`) in a variable named like the **check**, here `pdfa` and `pdfa_b2`. Each check has the name of its `backend` to use and a `flavour` to set the type of check to perform. 
+There is also a **profile** defines with the name `archive`. A profile performs all `checks` and stores the results (the `validity` and also `errors`) in a variable named like the **check**, here `pdfa` and `pdfa_b2`. Each check has the name of its `backend` to use and a `config` to set the type of check to perform. 
 The results of all checks are then evaluated by the `rule` of the profile. The syntax of the rule is almost PHP syntax, but before any function is available, they must be registered first!
 
 If you were using the [DBP API Server Template](https://packagist.org/packages/dbp/relay-server-template)
@@ -142,11 +142,11 @@ class VerityEventSubscriber implements EventSubscriberInterface
     public static function getSubscribedEvents(): array
     {
         return [
-            VeritasEvent::NAME => 'onVerity',
+            VerityEvent::NAME => 'onVerity',
         ];
     }
 
-    public function onVerity(VeritasEvent $event)
+    public function onVerity(VerityEvent $event)
     {
         $report = $event->getReport();
 
