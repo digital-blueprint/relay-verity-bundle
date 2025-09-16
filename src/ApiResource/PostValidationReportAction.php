@@ -29,6 +29,8 @@ class PostValidationReportAction extends AbstractController
      */
     public function __invoke(Request $request): VerityReport
     {
+        $this->denyAccessUnlessGranted('IS_AUTHENTICATED_FULLY');
+
         if ($request->files->get('file') === null) {
             throw ApiError::withDetails(Response::HTTP_BAD_REQUEST,
                 'No file with parameter key "file" was received!',
@@ -36,8 +38,6 @@ class PostValidationReportAction extends AbstractController
         }
 
         $uuid = $request->request->get('uuid');
-
-        //        $this->denyAccessUnlessGranted('IS_AUTHENTICATED_FULLY');
 
         $profileName = $request->request->get('profile');
         if ($profileName === '' || $profileName === null) {
