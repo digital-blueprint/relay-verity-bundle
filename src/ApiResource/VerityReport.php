@@ -17,7 +17,7 @@ use Symfony\Component\Serializer\Attribute\Groups;
 
 #[ApiResource(
     uriTemplate: '/verity/reports',
-    shortName: 'Validation Report',
+    shortName: 'Verity',
     operations: [
         new Get(
             controller: NotFoundAction::class,

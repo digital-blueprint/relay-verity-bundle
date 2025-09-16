@@ -72,7 +72,7 @@ class PostValidationReportAction extends AbstractController
         }
         $fileHash = $sha1checksum;
 
-        $report = $this->validationService->validate($uuid, $fileContent, $fileName, $fileSize, $fileHash, $profileName, $mimetype);
+        $report = $this->validationService->validate($uuid, $uploadedFile, $fileName, $fileSize, $fileHash, $profileName, $mimetype);
 
         return $report;
     }
