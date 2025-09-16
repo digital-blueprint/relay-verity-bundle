@@ -2,6 +2,9 @@
 
 ## Unreleased
 
+## v0.1.7
+- Add `denyAccessUnlessGranted` call to `PostValidationReportAction.php`
+
 ## v0.1.6
 - Fix file upload in Swagger for `/verity/reports`
 
