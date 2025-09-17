@@ -108,7 +108,7 @@ class VerityService implements LoggerAwareInterface
         $report = new VerityReport($uuid);
         $report->setProfile($profileName);
         $report->setValid($validity);
-        if ($errors) {
+        if ($errors && !$validity) {
             $report->setErrors($errors);
             $report->setMessage('Has Errors');
         } else {
