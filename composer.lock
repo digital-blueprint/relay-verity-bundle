@@ -1632,16 +1632,16 @@
         },
         {
             "name": "kevinrob/guzzle-cache-middleware",
-            "version": "6.0.0",
+            "version": "7.0.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/Kevinrob/guzzle-cache-middleware.git",
-                "reference": "61305ed694e763e887a04f61e71e2292bb4fbad1"
+                "reference": "3d63aaf136c5a52ce751a63c2169b3a49b26841f"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Kevinrob/guzzle-cache-middleware/zipball/61305ed694e763e887a04f61e71e2292bb4fbad1",
-                "reference": "61305ed694e763e887a04f61e71e2292bb4fbad1",
+                "url": "https://api.github.com/repos/Kevinrob/guzzle-cache-middleware/zipball/3d63aaf136c5a52ce751a63c2169b3a49b26841f",
+                "reference": "3d63aaf136c5a52ce751a63c2169b3a49b26841f",
                 "shasum": ""
             },
             "require": {
@@ -1653,16 +1653,14 @@
             "require-dev": {
                 "cache/array-adapter": "^0.4 || ^0.5 || ^1.0",
                 "cache/simple-cache-bridge": "^0.1 || ^1.0",
-                "doctrine/cache": "^1.10",
                 "illuminate/cache": "^5.0",
-                "league/flysystem": "^2.5",
+                "league/flysystem": "^3.16",
                 "phpunit/phpunit": "^9.6.21",
                 "psr/cache": "^1.0",
                 "symfony/cache": "^4.4 || ^5.0",
                 "symfony/phpunit-bridge": "^7.1.4"
             },
             "suggest": {
-                "doctrine/cache": "This library has a lot of ready-to-use cache storage (to be used with Kevinrob\\GuzzleCache\\Storage\\DoctrineCacheStorage). Use only versions >=1.4.0 < 2.0.0",
                 "guzzlehttp/guzzle": "For using this library. It was created for Guzzle6 (but you can use it with any PSR-7 HTTP client).",
                 "laravel/framework": "To be used with Kevinrob\\GuzzleCache\\Storage\\LaravelCacheStorage",
                 "league/flysystem": "To be used with Kevinrob\\GuzzleCache\\Storage\\FlysystemStorage",
@@ -1694,7 +1692,6 @@
                 "Guzzle",
                 "cache",
                 "cache-control",
-                "doctrine",
                 "expiration",
                 "guzzle6",
                 "handler",
@@ -1711,9 +1708,9 @@
             ],
             "support": {
                 "issues": "https://github.com/Kevinrob/guzzle-cache-middleware/issues",
-                "source": "https://github.com/Kevinrob/guzzle-cache-middleware/tree/6.0.0"
+                "source": "https://github.com/Kevinrob/guzzle-cache-middleware/tree/7.0.0"
             },
-            "time": "2024-10-17T09:11:54+00:00"
+            "time": "2025-09-04T18:27:50+00:00"
         },
         {
             "name": "monolog/monolog",
@@ -8240,16 +8237,11 @@
         },
         {
             "name": "phpstan/phpstan",
-            "version": "1.12.31",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/phpstan/phpstan-phar-composer-source.git",
-                "reference": "git1"
-            },
+            "version": "1.12.32",
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/phpstan/phpstan/zipball/a7630bb5311a41d13a2364634c78c5f4da250d53",
-                "reference": "a7630bb5311a41d13a2364634c78c5f4da250d53",
+                "url": "https://api.github.com/repos/phpstan/phpstan/zipball/2770dcdf5078d0b0d53f94317e06affe88419aa8",
+                "reference": "2770dcdf5078d0b0d53f94317e06affe88419aa8",
                 "shasum": ""
             },
             "require": {
@@ -8294,7 +8286,7 @@
                     "type": "github"
                 }
             ],
-            "time": "2025-09-24T15:58:55+00:00"
+            "time": "2025-09-30T10:16:31+00:00"
         },
         {
             "name": "phpstan/phpstan-phpunit",
