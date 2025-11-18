@@ -2,6 +2,10 @@
 
 ## Unreleased
 
+## v0.1.8
+- Don't show error messages when uploaded pdf is valid
+- Drop support for api-platform 3
+
 ## v0.1.7
 - Add `denyAccessUnlessGranted` call to `PostValidationReportAction.php`
 
