@@ -8,7 +8,7 @@
         "ext-curl": "*",
         "ext-fileinfo": "*",
         "ext-json": "*",
-        "api-platform/core": "^3.4 || ^4.1",
+        "api-platform/core": "^4.1",
         "dbp/relay-core-bundle": "^0.1.210",
         "psr/log": "^2.0 || ^3.0",
         "symfony/config": "^6.4",
