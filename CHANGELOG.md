@@ -2,6 +2,9 @@
 
 ## Unreleased
 
+## v0.1.9
+- Add support for Symfony 7
+
 ## v0.1.8
 - Don't show error messages when uploaded pdf is valid
 - Drop support for api-platform 3
