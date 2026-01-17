@@ -399,16 +399,16 @@
         },
         {
             "name": "api-platform/metadata",
-            "version": "v4.2.12",
+            "version": "v4.2.13",
             "source": {
                 "type": "git",
                 "url": "https://github.com/api-platform/metadata.git",
-                "reference": "429ee219f930efd274a9f4e91e92921add7f988a"
+                "reference": "590195d1038e66a039f1847b43040b7e6b78475f"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/api-platform/metadata/zipball/429ee219f930efd274a9f4e91e92921add7f988a",
-                "reference": "429ee219f930efd274a9f4e91e92921add7f988a",
+                "url": "https://api.github.com/repos/api-platform/metadata/zipball/590195d1038e66a039f1847b43040b7e6b78475f",
+                "reference": "590195d1038e66a039f1847b43040b7e6b78475f",
                 "shasum": ""
             },
             "require": {
@@ -491,22 +491,22 @@
                 "swagger"
             ],
             "support": {
-                "source": "https://github.com/api-platform/metadata/tree/v4.2.12"
+                "source": "https://github.com/api-platform/metadata/tree/v4.2.13"
             },
-            "time": "2025-12-27T22:15:57+00:00"
+            "time": "2026-01-12T13:36:15+00:00"
         },
         {
             "name": "api-platform/openapi",
-            "version": "v4.2.12",
+            "version": "v4.2.13",
             "source": {
                 "type": "git",
                 "url": "https://github.com/api-platform/openapi.git",
-                "reference": "3417415125f3ebbcb620f84ef9dd1cd07e2b2621"
+                "reference": "3600d57bf2729c8fa82d831edbdd21244037ee1b"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/api-platform/openapi/zipball/3417415125f3ebbcb620f84ef9dd1cd07e2b2621",
-                "reference": "3417415125f3ebbcb620f84ef9dd1cd07e2b2621",
+                "url": "https://api.github.com/repos/api-platform/openapi/zipball/3600d57bf2729c8fa82d831edbdd21244037ee1b",
+                "reference": "3600d57bf2729c8fa82d831edbdd21244037ee1b",
                 "shasum": ""
             },
             "require": {
@@ -581,9 +581,9 @@
                 "swagger"
             ],
             "support": {
-                "source": "https://github.com/api-platform/openapi/tree/v4.2.12"
+                "source": "https://github.com/api-platform/openapi/tree/v4.2.13"
             },
-            "time": "2026-01-08T18:17:35+00:00"
+            "time": "2026-01-16T15:43:25+00:00"
         },
         {
             "name": "api-platform/serializer",
@@ -777,29 +777,29 @@
         },
         {
             "name": "api-platform/symfony",
-            "version": "v4.2.12",
+            "version": "v4.2.13",
             "source": {
                 "type": "git",
                 "url": "https://github.com/api-platform/symfony.git",
-                "reference": "6d919776f7784bb5dc50b2226375d15e0ac3875b"
+                "reference": "4ff4ef66768fa2b9d7d124a2096b095bad0289d4"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/api-platform/symfony/zipball/6d919776f7784bb5dc50b2226375d15e0ac3875b",
-                "reference": "6d919776f7784bb5dc50b2226375d15e0ac3875b",
+                "url": "https://api.github.com/repos/api-platform/symfony/zipball/4ff4ef66768fa2b9d7d124a2096b095bad0289d4",
+                "reference": "4ff4ef66768fa2b9d7d124a2096b095bad0289d4",
                 "shasum": ""
             },
             "require": {
-                "api-platform/documentation": "^4.2.3",
-                "api-platform/http-cache": "^4.2.3",
-                "api-platform/hydra": "^4.2.3",
-                "api-platform/json-schema": "^4.2.3",
-                "api-platform/jsonld": "^4.2.3",
-                "api-platform/metadata": "^4.2.3",
-                "api-platform/openapi": "^4.2.3",
-                "api-platform/serializer": "^4.2.4",
-                "api-platform/state": "^4.2.4",
-                "api-platform/validator": "^4.2.3",
+                "api-platform/documentation": "^4.2.12",
+                "api-platform/http-cache": "^4.2.12",
+                "api-platform/hydra": "^4.2.12",
+                "api-platform/json-schema": "^4.2.12",
+                "api-platform/jsonld": "^4.2.12",
+                "api-platform/metadata": "^4.2.12",
+                "api-platform/openapi": "^4.2.12",
+                "api-platform/serializer": "^4.2.12",
+                "api-platform/state": "^4.2.12",
+                "api-platform/validator": "^4.2.12",
                 "php": ">=8.2",
                 "symfony/asset": "^6.4 || ^7.0 || ^8.0",
                 "symfony/finder": "^6.4 || ^7.0 || ^8.0",
@@ -810,12 +810,12 @@
                 "willdurand/negotiation": "^3.1"
             },
             "require-dev": {
-                "api-platform/doctrine-common": "^4.2.3",
-                "api-platform/doctrine-odm": "^4.2.3",
-                "api-platform/doctrine-orm": "^4.2.3",
-                "api-platform/elasticsearch": "^4.2.3",
-                "api-platform/graphql": "^4.2.3",
-                "api-platform/hal": "^4.2.3",
+                "api-platform/doctrine-common": "^4.2.12",
+                "api-platform/doctrine-odm": "^4.2.12",
+                "api-platform/doctrine-orm": "^4.2.12",
+                "api-platform/elasticsearch": "^4.2.12",
+                "api-platform/graphql": "^4.2.12",
+                "api-platform/hal": "^4.2.12",
                 "phpspec/prophecy-phpunit": "^2.2",
                 "phpunit/phpunit": "^12.2",
                 "symfony/expression-language": "^6.4 || ^7.0 || ^8.0",
@@ -899,9 +899,9 @@
                 "symfony"
             ],
             "support": {
-                "source": "https://github.com/api-platform/symfony/tree/v4.2.12"
+                "source": "https://github.com/api-platform/symfony/tree/v4.2.13"
             },
-            "time": "2025-12-31T09:26:07+00:00"
+            "time": "2026-01-16T16:29:22+00:00"
         },
         {
             "name": "api-platform/validator",
@@ -9574,16 +9574,16 @@
         },
         {
             "name": "phpunit/phpunit",
-            "version": "11.5.46",
+            "version": "11.5.48",
             "source": {
                 "type": "git",
                 "url": "https://github.com/sebastianbergmann/phpunit.git",
-                "reference": "75dfe79a2aa30085b7132bb84377c24062193f33"
+                "reference": "fe3665c15e37140f55aaf658c81a2eb9030b6d89"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/sebastianbergmann/phpunit/zipball/75dfe79a2aa30085b7132bb84377c24062193f33",
-                "reference": "75dfe79a2aa30085b7132bb84377c24062193f33",
+                "url": "https://api.github.com/repos/sebastianbergmann/phpunit/zipball/fe3665c15e37140f55aaf658c81a2eb9030b6d89",
+                "reference": "fe3665c15e37140f55aaf658c81a2eb9030b6d89",
                 "shasum": ""
             },
             "require": {
@@ -9597,7 +9597,7 @@
                 "phar-io/manifest": "^2.0.4",
                 "phar-io/version": "^3.2.1",
                 "php": ">=8.2",
-                "phpunit/php-code-coverage": "^11.0.11",
+                "phpunit/php-code-coverage": "^11.0.12",
                 "phpunit/php-file-iterator": "^5.1.0",
                 "phpunit/php-invoker": "^5.0.1",
                 "phpunit/php-text-template": "^4.0.1",
@@ -9655,7 +9655,7 @@
             "support": {
                 "issues": "https://github.com/sebastianbergmann/phpunit/issues",
                 "security": "https://github.com/sebastianbergmann/phpunit/security/policy",
-                "source": "https://github.com/sebastianbergmann/phpunit/tree/11.5.46"
+                "source": "https://github.com/sebastianbergmann/phpunit/tree/11.5.48"
             },
             "funding": [
                 {
@@ -9679,7 +9679,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2025-12-06T08:01:15+00:00"
+            "time": "2026-01-16T16:26:27+00:00"
         },
         {
             "name": "react/cache",
