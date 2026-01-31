@@ -399,16 +399,16 @@
         },
         {
             "name": "api-platform/metadata",
-            "version": "v4.2.14",
+            "version": "v4.2.15",
             "source": {
                 "type": "git",
                 "url": "https://github.com/api-platform/metadata.git",
-                "reference": "590195d1038e66a039f1847b43040b7e6b78475f"
+                "reference": "4d10dbd7b8f036d24df35eb3ec02c0f0befcf397"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/api-platform/metadata/zipball/590195d1038e66a039f1847b43040b7e6b78475f",
-                "reference": "590195d1038e66a039f1847b43040b7e6b78475f",
+                "url": "https://api.github.com/repos/api-platform/metadata/zipball/4d10dbd7b8f036d24df35eb3ec02c0f0befcf397",
+                "reference": "4d10dbd7b8f036d24df35eb3ec02c0f0befcf397",
                 "shasum": ""
             },
             "require": {
@@ -491,22 +491,22 @@
                 "swagger"
             ],
             "support": {
-                "source": "https://github.com/api-platform/metadata/tree/v4.2.14"
+                "source": "https://github.com/api-platform/metadata/tree/v4.2.15"
             },
-            "time": "2026-01-12T13:36:15+00:00"
+            "time": "2026-01-27T07:12:16+00:00"
         },
         {
             "name": "api-platform/openapi",
-            "version": "v4.2.14",
+            "version": "v4.2.15",
             "source": {
                 "type": "git",
                 "url": "https://github.com/api-platform/openapi.git",
-                "reference": "39ed78187a4a8e7c1c1fc9b5a3ef3913e3e914e3"
+                "reference": "59c13717f63e21f98d4ed4e4d7122b0bade72e2e"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/api-platform/openapi/zipball/39ed78187a4a8e7c1c1fc9b5a3ef3913e3e914e3",
-                "reference": "39ed78187a4a8e7c1c1fc9b5a3ef3913e3e914e3",
+                "url": "https://api.github.com/repos/api-platform/openapi/zipball/59c13717f63e21f98d4ed4e4d7122b0bade72e2e",
+                "reference": "59c13717f63e21f98d4ed4e4d7122b0bade72e2e",
                 "shasum": ""
             },
             "require": {
@@ -581,9 +581,9 @@
                 "swagger"
             ],
             "support": {
-                "source": "https://github.com/api-platform/openapi/tree/v4.2.14"
+                "source": "https://github.com/api-platform/openapi/tree/v4.2.15"
             },
-            "time": "2026-01-17T19:34:53+00:00"
+            "time": "2026-01-26T15:38:30+00:00"
         },
         {
             "name": "api-platform/serializer",
@@ -777,16 +777,16 @@
         },
         {
             "name": "api-platform/symfony",
-            "version": "v4.2.14",
+            "version": "v4.2.15",
             "source": {
                 "type": "git",
                 "url": "https://github.com/api-platform/symfony.git",
-                "reference": "31539dc26bd88f54e43d2d8a24613ff988307da1"
+                "reference": "93fdcbe189a1866412f5da04e26fa5615e99b210"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/api-platform/symfony/zipball/31539dc26bd88f54e43d2d8a24613ff988307da1",
-                "reference": "31539dc26bd88f54e43d2d8a24613ff988307da1",
+                "url": "https://api.github.com/repos/api-platform/symfony/zipball/93fdcbe189a1866412f5da04e26fa5615e99b210",
+                "reference": "93fdcbe189a1866412f5da04e26fa5615e99b210",
                 "shasum": ""
             },
             "require": {
@@ -899,9 +899,9 @@
                 "symfony"
             ],
             "support": {
-                "source": "https://github.com/api-platform/symfony/tree/v4.2.14"
+                "source": "https://github.com/api-platform/symfony/tree/v4.2.15"
             },
-            "time": "2026-01-23T14:24:03+00:00"
+            "time": "2026-01-30T13:31:50+00:00"
         },
         {
             "name": "api-platform/validator",
@@ -981,16 +981,16 @@
         },
         {
             "name": "dbp/relay-core-bundle",
-            "version": "v0.1.227",
+            "version": "v0.1.228",
             "source": {
                 "type": "git",
                 "url": "https://github.com/digital-blueprint/relay-core-bundle.git",
-                "reference": "1e079830ead1e034f046abbf59348d4cb6ef0094"
+                "reference": "aa8b13b9c26a7bf7448f9b4fa6fbd5486383d09a"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/digital-blueprint/relay-core-bundle/zipball/1e079830ead1e034f046abbf59348d4cb6ef0094",
-                "reference": "1e079830ead1e034f046abbf59348d4cb6ef0094",
+                "url": "https://api.github.com/repos/digital-blueprint/relay-core-bundle/zipball/aa8b13b9c26a7bf7448f9b4fa6fbd5486383d09a",
+                "reference": "aa8b13b9c26a7bf7448f9b4fa6fbd5486383d09a",
                 "shasum": ""
             },
             "require": {
@@ -1034,7 +1034,7 @@
                 "symfony/messenger": "^6.4 || ^7.4",
                 "symfony/mime": "^6.4 || ^7.4",
                 "symfony/monolog-bundle": "^3.8 || ^4.0",
-                "symfony/process": "^6.4 || ^7.4",
+                "symfony/process": "^6.4 || ^7.4.5",
                 "symfony/property-info": "^6.4 || ^7.4",
                 "symfony/psr-http-message-bridge": "^6.4 || ^7.4",
                 "symfony/routing": "^6.4 || ^7.4",
@@ -1087,9 +1087,9 @@
             "description": "The core bundle of the Relay API gateway",
             "support": {
                 "issues": "https://github.com/digital-blueprint/relay-core-bundle/issues",
-                "source": "https://github.com/digital-blueprint/relay-core-bundle/tree/v0.1.227"
+                "source": "https://github.com/digital-blueprint/relay-core-bundle/tree/v0.1.228"
             },
-            "time": "2025-12-09T10:49:41+00:00"
+            "time": "2026-01-29T07:50:36+00:00"
         },
         {
             "name": "doctrine/collections",
@@ -6116,16 +6116,16 @@
         },
         {
             "name": "symfony/process",
-            "version": "v7.4.4",
+            "version": "v7.4.5",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/process.git",
-                "reference": "626f07a53f4b4e2f00e11824cc29f928d797783b"
+                "reference": "608476f4604102976d687c483ac63a79ba18cc97"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/process/zipball/626f07a53f4b4e2f00e11824cc29f928d797783b",
-                "reference": "626f07a53f4b4e2f00e11824cc29f928d797783b",
+                "url": "https://api.github.com/repos/symfony/process/zipball/608476f4604102976d687c483ac63a79ba18cc97",
+                "reference": "608476f4604102976d687c483ac63a79ba18cc97",
                 "shasum": ""
             },
             "require": {
@@ -6157,7 +6157,7 @@
             "description": "Executes commands in sub-processes",
             "homepage": "https://symfony.com",
             "support": {
-                "source": "https://github.com/symfony/process/tree/v7.4.4"
+                "source": "https://github.com/symfony/process/tree/v7.4.5"
             },
             "funding": [
                 {
@@ -6177,7 +6177,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2026-01-20T09:23:51+00:00"
+            "time": "2026-01-26T15:07:59+00:00"
         },
         {
             "name": "symfony/property-access",
