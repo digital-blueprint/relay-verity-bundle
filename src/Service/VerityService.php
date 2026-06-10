@@ -57,6 +57,9 @@ class VerityService implements LoggerAwareInterface
                 'Parameter file hash mismatch.',
                 'verity:create-report-file-hash-mismatch');
         }
+        if ($fileHash === null) {
+            $fileHash = hash_file('sha256', $file->getPathname());
+        }
 
         // Collect standard information about the document.
         $document = new \stdClass();
