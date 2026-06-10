@@ -9,7 +9,7 @@ use Dbp\Relay\VerityBundle\Event\VerityRequestEvent;
 use Symfony\Bundle\FrameworkBundle\Test\KernelTestCase;
 use Symfony\Component\EventDispatcher\EventDispatcherInterface;
 use Symfony\Component\HttpFoundation\File\File;
-use Symfony\Polyfill\Uuid\Uuid;
+use Symfony\Component\Uid\Uuid;
 
 class VerityEventTest extends KernelTestCase
 {
@@ -33,7 +33,7 @@ class VerityEventTest extends KernelTestCase
         try {
             $data = 'data...';
             file_put_contents($filePath, $data);
-            $uuid = Uuid::uuid_create();
+            $uuid = Uuid::v4()->toRfc4122();
             $fileName = 'test-003.txt';
             $event = new VerityRequestEvent($uuid,
                 $fileName,

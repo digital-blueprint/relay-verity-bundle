@@ -10,7 +10,7 @@ use Dbp\Relay\VerityBundle\Service\DummyAPI;
 use Symfony\Bundle\FrameworkBundle\Test\KernelTestCase;
 use Symfony\Component\EventDispatcher\EventDispatcherInterface;
 use Symfony\Component\HttpFoundation\File\File;
-use Symfony\Polyfill\Uuid\Uuid;
+use Symfony\Component\Uid\Uuid;
 
 class EventSubscriberTest extends KernelTestCase
 {
@@ -31,7 +31,7 @@ class EventSubscriberTest extends KernelTestCase
         try {
             $data = 'data...';
             file_put_contents($filePath, $data);
-            $event = new VerityRequestEvent(Uuid::uuid_create(),
+            $event = new VerityRequestEvent(Uuid::v4()->toRfc4122(),
                 'test-001.txt',
                 null,
                 'unit_test',
@@ -55,7 +55,7 @@ class EventSubscriberTest extends KernelTestCase
             DummyAPI::$maxsize = 16;
             $data = 'data.data.data.data.'; // more than 16 chars
             file_put_contents($filePath, $data);
-            $event = new VerityRequestEvent(Uuid::uuid_create(),
+            $event = new VerityRequestEvent(Uuid::v4()->toRfc4122(),
                 'test-002.txt',
                 null,
                 'unit_test',
@@ -79,7 +79,7 @@ class EventSubscriberTest extends KernelTestCase
         try {
             $data = '';
             file_put_contents($filePath, $data);
-            $event = new VerityRequestEvent(Uuid::uuid_create(),
+            $event = new VerityRequestEvent(Uuid::v4()->toRfc4122(),
                 'test-003.txt',
                 null,
                 'unit_test',
@@ -103,7 +103,7 @@ class EventSubscriberTest extends KernelTestCase
         try {
             $data = 'data';
             file_put_contents($filePath, $data);
-            $event = new VerityRequestEvent(Uuid::uuid_create(),
+            $event = new VerityRequestEvent(Uuid::v4()->toRfc4122(),
                 'test-004.txt',
                 null,
                 'unit_test',
@@ -127,7 +127,7 @@ class EventSubscriberTest extends KernelTestCase
         try {
             $data = 'data...';
             file_put_contents($filePath, $data);
-            $event = new VerityRequestEvent(Uuid::uuid_create(),
+            $event = new VerityRequestEvent(Uuid::v4()->toRfc4122(),
                 'test-005.txt',
                 null,
                 '',
@@ -151,7 +151,7 @@ class EventSubscriberTest extends KernelTestCase
         try {
             $data = 'data...';
             file_put_contents($filePath, $data);
-            $event = new VerityRequestEvent(Uuid::uuid_create(),
+            $event = new VerityRequestEvent(Uuid::v4()->toRfc4122(),
                 'test-006.txt',
                 null,
                 'unknown???',
@@ -175,7 +175,7 @@ class EventSubscriberTest extends KernelTestCase
         try {
             $data = 'data...';
             file_put_contents($filePath, $data);
-            $event = new VerityRequestEvent(Uuid::uuid_create(),
+            $event = new VerityRequestEvent(Uuid::v4()->toRfc4122(),
                 'test-007.txt',
                 hash('sha1', $data),
                 'unit_test',
@@ -198,7 +198,7 @@ class EventSubscriberTest extends KernelTestCase
         try {
             $data = 'data...';
             file_put_contents($filePath, $data);
-            $event = new VerityRequestEvent(Uuid::uuid_create(),
+            $event = new VerityRequestEvent(Uuid::v4()->toRfc4122(),
                 'test-008.txt',
                 hash('sha1', $data.'!!!'),
                 'unit_test',
