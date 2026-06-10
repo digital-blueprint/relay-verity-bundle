@@ -22,7 +22,6 @@ class VerityEventTest extends KernelTestCase
 
         $this->dispatcher = $container->get(EventDispatcherInterface::class);
         $this->dispatcher->addListener(VerityEvent::class, static function (VerityEvent $e) {
-            echo '(+++ static function called +++)';
             VerityEventTest::$event = $e;
         });
     }
