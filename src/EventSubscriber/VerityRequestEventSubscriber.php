@@ -4,7 +4,6 @@ declare(strict_types=1);
 
 namespace Dbp\Relay\VerityBundle\EventSubscriber;
 
-use Dbp\Relay\VerityBundle\ApiResource\VerityReport;
 use Dbp\Relay\VerityBundle\Event\VerityRequestEvent;
 use Dbp\Relay\VerityBundle\Service\VerityService;
 use Symfony\Component\EventDispatcher\Attribute\AsEventListener;
@@ -39,10 +38,8 @@ class VerityRequestEventSubscriber implements EventSubscriberInterface
             $event->fileHash,
             $event->profileName,
             $event->mimetype);
-        if ($report instanceof VerityReport) {
-            $event->valid = $report->isValid();
-            $event->message = $report->getMessage();
-            $event->errors = $report->getErrors();
-        }
+        $event->valid = $report->isValid();
+        $event->message = $report->getMessage();
+        $event->errors = $report->getErrors();
     }
 }

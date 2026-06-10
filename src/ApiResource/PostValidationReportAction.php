@@ -48,7 +48,7 @@ class PostValidationReportAction extends AbstractController
 
         //        $this->checkProfilePermissions($profileName);
 
-        /** @var File $uploadedFile */
+        /** @var ?File $uploadedFile */
         $uploadedFile = $request->files->get('file');
 
         // Check if there is an uploaded file

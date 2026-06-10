@@ -12,7 +12,6 @@ use Psr\Log\LoggerAwareTrait;
 use Symfony\Component\EventDispatcher\EventDispatcherInterface;
 use Symfony\Component\ExpressionLanguage\ExpressionLanguage;
 use Symfony\Component\HttpFoundation\Response;
-use Symfony\Contracts\HttpClient\HttpClientInterface;
 
 class VerityService implements LoggerAwareInterface
 {
@@ -23,7 +22,6 @@ class VerityService implements LoggerAwareInterface
     public function __construct(
         private readonly EventDispatcherInterface $eventDispatcher,
         private readonly ConfigurationService $configurationService,
-        private readonly HttpClientInterface $httpClient,
         private readonly VerityProviderInterfaceService $verityProviderInterfaceService)
     {
         $this->expressionLanguage = new ExpressionLanguage();
