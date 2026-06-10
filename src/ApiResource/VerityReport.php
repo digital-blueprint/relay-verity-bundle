@@ -11,7 +11,6 @@ use ApiPlatform\Metadata\Post;
 use ApiPlatform\OpenApi\Model\Operation;
 use ApiPlatform\OpenApi\Model\RequestBody;
 use ApiPlatform\Symfony\Action\NotFoundAction;
-use Dbp\Relay\VerityBundle\State\VerityReportStateProvider;
 use Symfony\Component\HttpFoundation\File\File;
 use Symfony\Component\Serializer\Attribute\Groups;
 
@@ -73,7 +72,6 @@ use Symfony\Component\Serializer\Attribute\Groups;
     outputFormats: ['jsonld' => ['application/ld+json']],
     normalizationContext: ['groups' => ['report:read']],
     denormalizationContext: ['groups' => ['report:write']],
-    provider: VerityReportStateProvider::class,
 )]
 class VerityReport
 {

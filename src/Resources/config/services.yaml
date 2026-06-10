@@ -10,11 +10,6 @@ services:
     autowire: true
     autoconfigure: true
 
-  Dbp\Relay\VerityBundle\State\:
-    resource: '../../State'
-    autowire: true
-    autoconfigure: true
-
   Dbp\Relay\VerityBundle\EventSubscriber\:
     resource: '../../EventSubscriber'
     autowire: true
