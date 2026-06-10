@@ -11,6 +11,7 @@ use Psr\Log\LoggerAwareInterface;
 use Psr\Log\LoggerAwareTrait;
 use Symfony\Component\EventDispatcher\EventDispatcherInterface;
 use Symfony\Component\ExpressionLanguage\ExpressionLanguage;
+use Symfony\Component\HttpFoundation\File\File;
 use Symfony\Component\HttpFoundation\Response;
 
 class VerityService implements LoggerAwareInterface
@@ -43,7 +44,7 @@ class VerityService implements LoggerAwareInterface
         return 'validator-role';
     }
 
-    public function validate($uuid, $file, $fileName, $fileSize, $fileHash, $profileName, $mimetype): VerityReport
+    public function validate(?string $uuid, ?File $file, ?string $fileName, int $fileSize, ?string $fileHash, ?string $profileName, ?string $mimetype): VerityReport
     {
         $profile = $this->configurationService->getProfile($profileName);
         if ($profile === null) {
@@ -57,7 +58,7 @@ class VerityService implements LoggerAwareInterface
                 'Parameter file size is 0 (zero).',
                 'verity:create-report-file-size-zero');
         }
-        if ($file === null || $file === '') {
+        if ($file === null) {
             throw ApiError::withDetails(Response::HTTP_BAD_REQUEST,
                 'File content is empty.',
                 'verity:create-report-file-content-empty');
