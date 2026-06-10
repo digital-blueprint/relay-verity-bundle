@@ -28,22 +28,6 @@ class VerityService implements LoggerAwareInterface
         $this->expressionLanguage = new ExpressionLanguage();
     }
 
-    /**
-     * @return string[]
-     *
-     * @psalm-return list{'validator-rule'}
-     */
-    public function getValidationRules(): array
-    {
-        return ['validator-rule'];
-    }
-
-    public function getVerityRequiredRole(string $profileName): string
-    {
-        // TODO: Implement getVerityRequiredRole() method.
-        return 'validator-role';
-    }
-
     public function validate(?string $uuid, ?File $file, ?string $fileName, int $fileSize, ?string $fileHash, ?string $profileName, ?string $mimetype): VerityReport
     {
         $profile = $this->configurationService->getProfile($profileName);
