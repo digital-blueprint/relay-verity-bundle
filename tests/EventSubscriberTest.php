@@ -177,7 +177,7 @@ class EventSubscriberTest extends KernelTestCase
             file_put_contents($filePath, $data);
             $event = new VerityRequestEvent(Uuid::v4()->toRfc4122(),
                 'test-007.txt',
-                hash('sha1', $data),
+                hash('sha256', $data),
                 'unit_test',
                 new File($filePath),
                 'plain/text',
@@ -200,7 +200,7 @@ class EventSubscriberTest extends KernelTestCase
             file_put_contents($filePath, $data);
             $event = new VerityRequestEvent(Uuid::v4()->toRfc4122(),
                 'test-008.txt',
-                hash('sha1', $data.'!!!'),
+                hash('sha256', $data.'!!!'),
                 'unit_test',
                 new File($filePath),
                 'plain/text',

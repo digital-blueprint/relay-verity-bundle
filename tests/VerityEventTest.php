@@ -37,7 +37,7 @@ class VerityEventTest extends KernelTestCase
             $fileName = 'test-003.txt';
             $event = new VerityRequestEvent($uuid,
                 $fileName,
-                hash('sha1', $data),
+                hash('sha256', $data),
                 'unit_test',
                 new File($filePath),
                 'plain/text',

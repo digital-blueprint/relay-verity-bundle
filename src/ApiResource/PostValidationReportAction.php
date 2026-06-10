@@ -58,19 +58,16 @@ class PostValidationReportAction extends AbstractController
                 'verity:create-report-missing-file');
         }
 
-        $fileContent = $uploadedFile->getContent();
+        $checksum = hash('sha256', $uploadedFile->getContent());
         $mimetype = $uploadedFile->getMimeType();
         $fileSize = $uploadedFile->getSize();
         $fileName = $uploadedFile->getFilename();
         $fileHash = $request->request->get('fileHash');
-        // Calculate the sha1 checksum
-        $sha1checksum = sha1($fileContent);
-        if ($fileHash !== '' && $fileHash !== $sha1checksum) {
+        if ($fileHash !== null && $fileHash !== $checksum) {
             throw ApiError::withDetails(Response::HTTP_BAD_REQUEST,
                 'File hash mismatch!',
                 'verity:create-report-file-hash-mismatch');
         }
-        $fileHash = $sha1checksum;
 
         $report = $this->validationService->validate($uuid, $uploadedFile, $fileName, $fileSize, $fileHash, $profileName, $mimetype);
 

@@ -26,7 +26,7 @@ class DummyAPI implements VerityProviderInterface, LoggerAwareInterface
     /**
      * @throws \Exception
      */
-    public function validate(File $file, string $fileName, int $fileSize, ?string $sha1sum, string $config, string $mimetype): VerityResult
+    public function validate(File $file, string $fileName, int $fileSize, ?string $fileHash, string $config, string $mimetype): VerityResult
     {
         if ($file->getSize() > self::$maxsize) {
             $maxsize = self::$maxsize;

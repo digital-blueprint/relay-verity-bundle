@@ -52,7 +52,7 @@ class VerityService implements LoggerAwareInterface
                 'Parameter file size mismatch.',
                 'verity:create-report-file-size-mismatch');
         }
-        if ($fileHash !== null && $fileHash !== hash_file('sha1', $file->getPathname())) {
+        if ($fileHash !== null && $fileHash !== hash_file('sha256', $file->getPathname())) {
             throw ApiError::withDetails(Response::HTTP_BAD_REQUEST,
                 'Parameter file hash mismatch.',
                 'verity:create-report-file-hash-mismatch');
