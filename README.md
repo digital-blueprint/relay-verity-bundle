@@ -13,22 +13,6 @@ You can install the bundle directly from [packagist.org](https://packagist.org/p
 composer require dbp/relay-verity-bundle
 ```
 
-## Integration into the Relay API Server
-
-* Add the bundle to your `config/bundles.php` in front of `DbpRelayCoreBundle`:
-
-```php
-...
-Dbp\Relay\VerityBundle\DbpRelayVerityBundle::class => ['all' => true],
-Dbp\Relay\CoreBundle\DbpRelayCoreBundle::class => ['all' => true],
-];
-```
-
-If you were using the [DBP API Server Template](https://packagist.org/packages/dbp/relay-server-template)
-as template for your Symfony application, then this should have already been generated for you.
-
-* Run `composer install` to clear caches
-
 ## Configuration
 
 For this create `config/packages/dbp_relay_verity.yaml` in the app with the following
