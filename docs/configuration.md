@@ -44,4 +44,7 @@ dbp_relay_verity:
         pdfa_2b:
           backend: 'pdfa'
           config: '{"flavour": "2b"}'
+  authorization:
+    roles:
+      ROLE_USER: 'true'
 ```

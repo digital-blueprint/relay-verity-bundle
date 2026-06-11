@@ -65,7 +65,6 @@ use Symfony\Component\Serializer\Attribute\Groups;
                     ])
                 )
             ),
-            security: 'is_granted("IS_AUTHENTICATED_FULLY")',
             deserialize: false,
         ),
     ],

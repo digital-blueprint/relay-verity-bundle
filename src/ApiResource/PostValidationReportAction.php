@@ -6,6 +6,7 @@ namespace Dbp\Relay\VerityBundle\ApiResource;
 
 use Dbp\Relay\CoreBundle\Exception\ApiError;
 use Dbp\Relay\CoreBundle\Rest\CustomControllerTrait;
+use Dbp\Relay\VerityBundle\Authorization\AuthorizationService;
 use Dbp\Relay\VerityBundle\Service\VerityService;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\File\File;
@@ -18,7 +19,8 @@ class PostValidationReportAction extends AbstractController
     use CustomControllerTrait;
 
     public function __construct(
-        private readonly VerityService $validationService)
+        private readonly VerityService $validationService,
+        private readonly AuthorizationService $authorizationService)
     {
     }
 
@@ -29,7 +31,7 @@ class PostValidationReportAction extends AbstractController
      */
     public function __invoke(Request $request): VerityReport
     {
-        $this->denyAccessUnlessGranted('IS_AUTHENTICATED_FULLY');
+        $this->authorizationService->checkCanUse();
 
         if ($request->files->get('file') === null) {
             throw ApiError::withDetails(Response::HTTP_BAD_REQUEST,

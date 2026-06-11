@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace Dbp\Relay\VerityBundle\DependencyInjection;
 
 use Dbp\Relay\CoreBundle\Extension\ExtensionTrait;
+use Dbp\Relay\VerityBundle\Authorization\AuthorizationService;
 use Dbp\Relay\VerityBundle\Service\ConfigurationService;
 use Symfony\Component\Config\FileLocator;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
@@ -26,6 +27,9 @@ class DbpRelayVerityExtension extends ConfigurableExtension
         $loader->load('services.yaml');
 
         $definition = $container->getDefinition(ConfigurationService::class);
+        $definition->addMethodCall('setConfig', [$mergedConfig]);
+
+        $definition = $container->getDefinition(AuthorizationService::class);
         $definition->addMethodCall('setConfig', [$mergedConfig]);
     }
 }

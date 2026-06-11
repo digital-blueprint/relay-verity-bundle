@@ -15,3 +15,8 @@ services:
     autowire: true
     autoconfigure: true
     tags: [kernel.event_listener]
+
+  Dbp\Relay\VerityBundle\Authorization\:
+    resource: '../../Authorization'
+    autowire: true
+    autoconfigure: true
