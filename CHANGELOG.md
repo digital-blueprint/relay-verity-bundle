@@ -2,6 +2,13 @@
 
 ## Unreleased
 
+## v0.2.0
+
+- Added bundle authorization configuration. Adds a `ROLE_USER` for all endpoints
+  which defaults to `false`.
+- Remove the `uuid` param from the HTTP API
+- Replaced all internal checksums with the `sha256`, as documented (was sha1 before)
+
 ## v0.1.9
 - Add support for Symfony 7
 
