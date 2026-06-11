@@ -13,6 +13,7 @@ use Symfony\Component\HttpFoundation\File\File;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpKernel\Exception\HttpException;
+use Symfony\Component\Uid\Uuid;
 
 class PostValidationReportAction extends AbstractController
 {
@@ -39,8 +40,6 @@ class PostValidationReportAction extends AbstractController
                 'verity:create-file-data-missing-file');
         }
 
-        $uuid = $request->request->get('uuid');
-
         $profileName = $request->request->get('profile');
         if ($profileName === '' || $profileName === null) {
             throw ApiError::withDetails(Response::HTTP_BAD_REQUEST,
@@ -60,6 +59,7 @@ class PostValidationReportAction extends AbstractController
                 'verity:create-report-missing-file');
         }
 
+        $uuid = Uuid::v4()->toRfc4122();
         $mimetype = $uploadedFile->getMimeType();
         $fileSize = $uploadedFile->getSize();
         $fileName = $uploadedFile->getFilename();

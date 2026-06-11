@@ -21,7 +21,8 @@ use Symfony\Component\Serializer\Attribute\Groups;
         new Get(
             controller: NotFoundAction::class,
             output: false,
-            read: false
+            read: false,
+            openapi: false,
         ),
         new Post(
             inputFormats: [
@@ -38,13 +39,8 @@ use Symfony\Component\Serializer\Attribute\Groups;
                         'multipart/form-data' => [
                             'schema' => [
                                 'type' => 'object',
-                                'required' => ['file', 'uuid', 'profile'],
+                                'required' => ['file', 'profile'],
                                 'properties' => [
-                                    'uuid' => [
-                                        'description' => 'The id (as UUID) of the report',
-                                        'type' => 'string',
-                                        'example' => 'cbe2a804-3948-4de9-b000-5cd65f657b2f',
-                                    ],
                                     'file' => [
                                         'type' => 'string',
                                         'format' => 'binary',
