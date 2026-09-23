@@ -2,6 +2,10 @@
 
 ## Unreleased
 
+## v0.2.1
+
+- Add support for api-platform 5.0
+
 ## v0.2.0
 
 - Added bundle authorization configuration. Adds a `ROLE_USER` for all endpoints
